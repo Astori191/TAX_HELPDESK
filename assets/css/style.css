@@ -1,0 +1,25 @@
+.bg-primary {
+    background-color: #0066B3 !important;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    /*background-color: gray;*/
+}
+
+.logo-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.nav-link {
+    color: #CBFBFF !important;
+}
+
+.navbar-text {
+    color: #CBFBFF !important;
+}
