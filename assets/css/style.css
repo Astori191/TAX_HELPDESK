@@ -2,6 +2,10 @@
     background-color: #0066B3 !important;
 }
 
+/*.nav-pills.active {
+    background-color: #0066B3 !important;
+}*/
+
 .logo {
     width: 100px;
     height: 100px;
@@ -16,10 +20,14 @@
     line-height: 28px;
 }
 
-.nav-link {
+.nav-link-my {
     color: #CBFBFF !important;
 }
 
 .navbar-text {
     color: #CBFBFF !important;
 } 
+
+.bottom-line {
+    border-bottom: 3px solid #e8f0f7;
+}
