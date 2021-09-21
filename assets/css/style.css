@@ -12,6 +12,11 @@
     /*background-color: gray;*/
 }
 
+.section-logo-main{
+    width: 70px;
+    height: 70px;  
+}
+
 .logo-text {
     font-family: Roboto;
     font-style: normal;
