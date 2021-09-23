@@ -2,6 +2,10 @@
     background-color: #0066B3 !important;
 }
 
+/* .bg-light {
+    background-color: #0066B3 !important;
+} */
+
 /*.nav-pills.active {
     background-color: #0066B3 !important;
 }*/
@@ -36,3 +40,23 @@
 .bottom-line {
     border-bottom: 3px solid #e8f0f7;
 }
+
+.right-section{
+    width: 60px;
+    height: 60px;
+}
+
+/*main > .container {
+    padding: 60px 15px 0;
+}*/
+
+.bg-light{
+    background-color: #0066B3 !important;
+}
+
+ .text-muted{
+    color: #CBFBFF !important;
+} 
+
+
+
