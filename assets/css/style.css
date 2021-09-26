@@ -1,6 +1,9 @@
 .bg-primary {
     background-color: #0066B3 !important;
 }
+.btn-primary {
+    background-color: #0066B3 !important;
+}
 
 /* .bg-light {
     background-color: #0066B3 !important;
@@ -38,7 +41,7 @@
 } 
 
 .bottom-line {
-    border-bottom: 3px solid #e8f0f7;
+    border-bottom: 3px solid #C6E6FF;
 }
 
 .right-section{
