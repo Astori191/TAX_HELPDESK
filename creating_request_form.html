@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/creating_request_form.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -57,56 +58,85 @@
           </div>
         </div>
       </div>
-      
-      <div class="row pt-3">
-        <div class="col-5">
-          <div class="little-head mb-4">
-            <h5>НОВОЕ ОБРАЩЕНИЕ</h5>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Дата создания</label>
-            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Категория</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Выберите из списка</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Исполнитель</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Выберите из списка</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Описание проблемы</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-          </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Автор</label>
-            <input type="text" class="form-control" id="formGroupExampleInput">
-          </div>
-          <button type="button" class="btn btn-primary">Создать</button>
+
+      <div class="row justify-content-center mt-3">
+        <div class="col-4">
+          <!-- <p class="text-uppercase req-head">Новое обращение</p> -->
+          <h1 class="display-6 req-head">Новое обращение</h1>
         </div>
-        <div class="col-3 mb-4"></div>
-        <div class="col-4 mb-4">
-          <h5>Рекомендации по заполнению</h5>
-          <p class="fw-normal">1. Заполните поле в соотвествии с какими-либо потребностями. Это тестовая надпись.</p>
-          <p class="fw-normal">2. Заполните поле в соотвествии с какими-либо потребностями. Это тестовая надпись.</p>
-          <p class="fw-normal">3. Заполните поле в соотвествии с какими-либо потребностями. Это тестовая надпись.</p>
-          <p class="fw-normal">4. Заполните поле в соотвествии с какими-либо потребностями. Это тестовая надпись.</p>
-          <p class="fw-normal">5. Заполните поле в соотвествии с какими-либо потребностями. Это тестовая надпись.</p>
+        <div class="col-1"></div>
+        <div class="col-4">
+          <h1 class="display-6 req-head">Рекомендации по заполнению</h1>
+          <!-- <p class="text-uppercase">Рекомендации по заполнению</p> -->
         </div>
       </div>
+
+      <div class="row justify-content-center">
+        <div class="col-4">
+          <label class="form-label">Дата создания</label>
+          <input class="form-control" type="date" placeholder="Default input" aria-label="default input example">
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 align-self-center pt-4">
+          <span>1. Выберите дату.</span>
+        </div>
+      </div>
+
+      <div class="row justify-content-center pt-3">
+        <div class="col-4">
+          <label class="form-label">Категория</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Выберите из списка</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-1"></div>
+          <div class="col-4 align-self-end">
+            <span>2. Выберите категорию из списка. Что-то ещё допишу или вообще выпилю этот столбец.</span>
+          </div>
+      </div>  
+
+      <div class="row justify-content-center pt-3">
+        <div class="col-4">
+          <label class="form-label">Исполнитель</label>
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Выберите из списка</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+        </div>
+          <div class="col-1"></div>
+            <div class="col-4 align-self-end mb-2">
+              <span>3. Выберите желаемого исполнителя.</span>
+          </div>
+      </div>
+
+      <div class="row justify-content-center pt-3">
+        <div class="col-4">
+          <label class="form-label">Описание проблемы</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+        </div>
+          <div class="col-1"></div>
+            <div class="col-4 align-self-center">
+              <span>4. Подробно опишите ситуацию.</span>
+            </div>
+          </div>
+
+      <div class="row justify-content-center pt-3">
+        <div class="col-4">
+          <label class="form-label">Автор</label>
+          <input type="text" class="form-control" id="formGroupExampleInput">
+          <button type="button" class="btn btn-primary mt-3">Создать</button>
+        </div>
+        <div class="col-1"></div>
+          <div class="col-4 align-self-center mb-3">
+            <span>5. Поле заполняется автоматически.</span>
+          </div>
+      </div>
     </div>  
-  </div>
 </main>
 
   <div class="d-flex mt-auto p-2 justify-content-center">

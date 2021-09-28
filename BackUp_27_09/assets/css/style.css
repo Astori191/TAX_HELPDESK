@@ -1,0 +1,65 @@
+.bg-primary {
+    background-color: #0066B3 !important;
+}
+.btn-primary {
+    background-color: #0066B3 !important;
+}
+
+/* .bg-light {
+    background-color: #0066B3 !important;
+} */
+
+/*.nav-pills.active {
+    background-color: #0066B3 !important;
+}*/
+
+.logo {
+    width: 100px;
+    height: 100px;
+    /*background-color: gray;*/
+}
+
+.section-logo-main{
+    width: 70px;
+    height: 70px;  
+}
+
+.logo-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.nav-link-my {
+    color: #CBFBFF !important;
+}
+
+.navbar-text {
+    color: #CBFBFF !important;
+} 
+
+.bottom-line {
+    border-bottom: 3px solid #C6E6FF;
+}
+
+.right-section{
+    width: 60px;
+    height: 60px;
+}
+
+/*main > .container {
+    padding: 60px 15px 0;
+}*/
+
+.bg-light{
+    background-color: #0066B3 !important;
+}
+
+ .text-muted{
+    color: #CBFBFF !important;
+} 
+
+
+

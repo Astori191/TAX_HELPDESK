@@ -1,8 +1,7 @@
-.container {
-  max-width: 960px;
-}
 
-.logo {
-  width: 100px;
-  height: 100px;
+.req-head {
+  /* text-align: center; */
+  font-size: 18pt;
+  font-weight: 350;
+  
 }
