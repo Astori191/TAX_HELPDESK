@@ -5,6 +5,10 @@
     background-color: #0066B3 !important;
 }
 
+.table {
+    border: 2px solid #C6E6FF !important;
+}
+
 /* .bg-light {
     background-color: #0066B3 !important;
 } */
@@ -45,8 +49,8 @@
 }
 
 .right-section{
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
 }
 
 /*main > .container {
