@@ -1,0 +1,42 @@
+.icon {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+  }
+
+.icon-req {
+    background-image: url(blue/mail.svg);
+  }
+
+.icon-req:hover,
+.icon-req:focus {
+  background-image: url(colored/mail.svg);
+}
+
+.icon-admin {
+    background-image: url(blue/admin.svg);
+  }
+
+.icon-admin:hover,
+.icon-admin:focus {
+  background-image: url(colored/admin.svg);
+}
+
+.icon-knowledge {
+    background-image: url(blue/knowledge.svg);
+  }
+
+.icon-knowledge:hover,
+.icon-knowledge:focus {
+  background-image: url(colored/knowledge.svg);
+}
+
+.icon-phonebook {
+    background-image: url(blue/contact-book.svg);
+  }
+
+.icon-phonebook:hover,
+.icon-phonebook:focus {
+  background-image: url(colored/contact-book.svg);
+}
