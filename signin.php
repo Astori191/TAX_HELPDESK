@@ -29,9 +29,9 @@
             </label>
           </div>
 
-          <a class="btn btn-primary btn-lg btn w-100" href="index.html" role="button">Войти</a>
+          <a class="btn btn-primary btn-lg btn w-100" href="index.php" role="button">Войти</a>
             <!-- <button class="  btn btn-lg btn-primary" type="submit">Войти</button> -->
-          <p class="mt-5 mb-3 text-muted">&copy; 2021, Портал технической поддержки ИФНС России № 30 по г. Москве</p>
+          <p class="mt-5 mb-3 text-muted">&copy; <?php echo date("Y"); ?>, Портал технической поддержки ИФНС России № 30 по г. Москве</p>
         </form>
       </main>
     </body>

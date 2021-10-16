@@ -1,55 +1,4 @@
-<!-- TODO База знаний в формате таблички с размещенными там файлами. Пара заголовков типа "Список изменений в версии хх.0x.c0.s" -->
-
-
-<!DOCTYPE html>
-<html lang="en" class="h-100">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link href="assets/css/hover.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <title>Личный кабинет заявителя</title>
-</head>
-<body class="d-flex flex-column h-100">
-  <nav class="navbar navbar-dark bg-primary navbar-expand-md"> 
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" aria-current="page" href="index.html">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-new.html">Обращения</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-admin.html">Кабинет исполнителя</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="phonebook.html">Телефонный справочник</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="helpers.html">База знаний</a>
-          </li>
-        </ul>
-        <span class="navbar-text me-2 cur-user">
-          Степанов Алексей Сергеевич (администратор)
-        </span>
-        <span class="navbar-text">
-          <a href="signin.html" class="logout-link">Выйти</a>
-        </span>
-      </div>
-    </div>
-  </nav>
-
+<?php include './includes/header.php'?>
   <main class="flex-shrink-0">
     <div class="container">
       <div class="row bottom-line pb-3">
@@ -61,7 +10,6 @@
           </div>
         </div>
       </div>
-
       <div class="row mt-4">
         <div class="col-6 ps-0">
           <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
@@ -78,7 +26,6 @@
           </ul>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-              
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -88,7 +35,6 @@
                   </div>
                 </div>
               </div>
-              
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -98,7 +44,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -108,7 +53,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -118,7 +62,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -128,7 +71,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row mb-3">
                 <div class="d-flex">
                   <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
@@ -138,7 +80,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
               pills-contact-tab2
@@ -153,66 +94,51 @@
           <h4>РАЗДЕЛЫ</h4>
           <div class="row">
             <div class="col">
-
               <div class="row">
                 <div class="d-flex p-3 align-items-center">
                   <div class="d-flex me-3 justify-content-center right-section">
-                    <a href="requests-new.html"><span class="icon icon-req"></span></a>
-                    <!-- <a href="requests-new.html"><img src="assets/img/blue/mail.svg" class="section-logo-main"></a> -->
+                    <a href="requests-new.php"><span class="icon icon-req"></span></a>
+                    <!-- <a href="requests-new.php"><img src="assets/img/blue/mail.svg" class="section-logo-main"></a> -->
                   </div>
                   <div class="item-text">Обращения</div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="d-flex p-3 align-items-center">
                   <div class="d-flex me-3 justify-content-center right-section">
-                    <a href="requests-admin.html"><span class="icon icon-admin"></span></a>
+                    <a href="requests-admin.php"><span class="icon icon-admin"></span></a>
                     <!-- <a href="#"><img src="assets/img/blue/admin.svg" class="section-logo-main"></a> -->
                   </div>
                   <div class="item-text">Кабинет исполнителя</div>
                 </div>
               </div>
             </div>
-
             <div class="col">
               <div class="row">
                 <div class="d-flex p-3 align-items-center">
                   <div class="d-flex me-3 justify-content-center right-section">
-                    <a href="helpers.html"><span class="icon icon-knowledge"></span></a>
+                    <a href="helpers.php"><span class="icon icon-knowledge"></span></a>
                     <!-- <a href="#"><img src="assets/img/blue/knowledge.svg" class="section-logo-main"></a> -->
                   </div>
                   <div class="item-text">База знаний</div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="d-flex p-3 align-items-center">
                   <div class="d-flex me-3 justify-content-center right-section">
-                    <a href="phonebook.html"><span class="icon icon-phonebook"></span></a>
+                    <a href="phonebook.php"><span class="icon icon-phonebook"></span></a>
                     <!-- <a href="#"><img src="assets/img/blue/contact-book.svg" class="section-logo-main"></a> -->
                   </div>
                   <div class="item-text">Телефонный справочник</div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-
   <div class="d-flex mt-auto p-2 justify-content-center">
     <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
   </div>
-
-  <footer class="footer py-3 bg-light">
-    <div class="container">
-      <span class="text-muted">Релиз 21.9.29.1 &copy Портал технической поддержки ИФНС России № 30 по г. Москве</span>
-    </div>
-  </footer>
-
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+  <?php include './includes/footer.php'; ?>

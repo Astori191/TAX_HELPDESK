@@ -1,51 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" class="h-100">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/style.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <title>Личный кабинет заявителя</title>
-</head>
-<body class="d-flex flex-column h-100">
-  <nav class="navbar navbar-dark bg-primary navbar-expand-md"> 
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" aria-current="page" href="index.html">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-new.html">Обращения</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-admin.html">Кабинет исполнителя</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="phonebook.html">Телефонный справочник</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-my" href="helpers.html">База знаний</a>
-          </li>
-        </ul>
-        <span class="navbar-text me-2 cur-user">
-          Степанов Алексей Сергеевич (администратор)
-        </span>
-        <span class="navbar-text">
-          <a href="signin.html" class="logout-link">Выйти</a>
-        </span>
-      </div>
-    </div>
-  </nav>
-
+<?php include './includes/header.php'?>
   <main class="flex-shrink-0">
     <div class="container">
       <div class="row bottom-line pb-3">
@@ -159,7 +112,6 @@
       </div>
     </div>
   </main>
-
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -170,12 +122,10 @@
       </div>
       <div class="modal-body">
         <form>
-
           <div class="mb-3">
             <label class="form-label">Дата создания</label>
             <input class="form-control" type="date" placeholder="Default input" aria-label="default input example">
           </div>
-
           <div class="mb-3">
             <label class="form-label">Категория</label>
             <select class="form-select" aria-label="Default select example">
@@ -185,7 +135,6 @@
               <option value="3">Three</option>
             </select>
           </div>
-
           <div class="mb-3">
             <label class="form-label">Исполнитель</label>
             <select class="form-select" aria-label="Default select example">
@@ -195,17 +144,14 @@
               <option value="3">Three</option>
             </select>
           </div>
-
           <div class="mb-3">
             <label class="form-label">Описание проблемы</label>
             <textarea class="form-control txtarea" id="exampleFormControlTextarea1" rows="4"></textarea>
           </div>
-
           <div class="mb-3">
             <label class="form-label">Заявитель</label>
             <input type="text" class="form-control" id="formGroupExampleInput">
           </div>
-
         </form>
       </div>
       <div class="modal-footer">
@@ -215,17 +161,7 @@
     </div>
   </div>
 </div>
-
   <div class="d-flex mt-auto p-2 justify-content-center">
     <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
   </div>
-
-  <footer class="footer py-3 bg-light">
-    <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
-    </div>
-  </footer>
-
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php include './includes/footer.php'; ?>
