@@ -65,5 +65,8 @@
     color: #CBFBFF !important;
 } 
 
+.txtarea{
+    max-height: 120px;
+}
 
 
