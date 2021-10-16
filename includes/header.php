@@ -1,5 +1,9 @@
+<?php include_once './dbconnect.php'; ?>
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en" class="h-100">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,11 +16,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <title>Личный кабинет заявителя</title>
 </head>
+
 <body class="d-flex flex-column h-100">
-  <nav class="navbar navbar-dark bg-primary navbar-expand-md"> 
+  <nav class="navbar navbar-dark bg-primary navbar-expand-md">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-              data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
@@ -37,12 +41,14 @@
             <a class="nav-link nav-link-my" href="helpers.php">База знаний</a>
           </li>
         </ul>
-        <span class="navbar-text me-2 cur-user">
-          Степанов Алексей Сергеевич (администратор)
-        </span>
-        <span class="navbar-text">
-          <a href="signin.php" class="logout-link">Выйти</a>
-        </span>
+        <?php if (isset($_SESSION['login'])) {
+          echo "<span class='navbar-text me-2 cur-user'>{$_SESSION["user_name"]} ({$_SESSION["role_name"]})</span>
+          <span class='navbar-text'>
+            <a href='signin.php' class='logout-link'>Выйти</a>
+          </span>";
+        }
+
+        ?>
       </div>
     </div>
   </nav>

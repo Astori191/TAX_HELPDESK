@@ -42,3 +42,7 @@ body {
 .btn-primary {
   background-color: #0066B3 !important;
 }
+
+.validation-msg{
+  color: red;
+}

@@ -7,3 +7,4 @@
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<?php db_close($conn); ?>

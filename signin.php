@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,24 +13,33 @@
   </head>
     <body class="text-center">
       <main class="form-signin">
-        <form>
+        <form method="post" action="/auth.php">
           <img class="mb-4" src="assets/img/Emblem_of_the_Federal_Tax_Service.svg" alt="" width="200" height="100">
           <h1 class="h3 mb-3 fw-normal">АВТОРИЗАЦИЯ</h1>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="text" class="form-control" id="floatingInput" name="login" placeholder="name@example.com">
             <label for="floatingInput">Логин</label>
           </div>
           <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password">
             <label for="floatingPassword">Пароль</label>
           </div>
           <div class="checkbox mb-3">
             <label>
-              <input type="checkbox" value="remember-me"> Запомнить меня
+              <input type="checkbox" value="remember-me" name="remember_me"> Запомнить меня</input>
             </label>
           </div>
 
-          <a class="btn btn-primary btn-lg btn w-100" href="index.php" role="button">Войти</a>
+
+          <button class="btn btn-primary btn-lg btn w-100" type="submit">Войти</button>
+          <p>
+            <?php 
+              if ($_SESSION['message']){
+                echo '<p class="validation-msg"> ' . $_SESSION['message'] . ' </p>';
+              }
+              unset($_SESSION['message']);
+            ?>
+        </p>
             <!-- <button class="  btn btn-lg btn-primary" type="submit">Войти</button> -->
           <p class="mt-5 mb-3 text-muted">&copy; <?php echo date("Y"); ?>, Портал технической поддержки ИФНС России № 30 по г. Москве</p>
         </form>
