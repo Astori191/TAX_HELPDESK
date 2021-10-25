@@ -26,60 +26,24 @@
           </ul>
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
+              <?php
+              $result = get_news($conn);
+
+              while ($row = mysqli_fetch_array($result)) {
+                echo "
+                <div class='row mb-3'>
+                  <div class='d-flex'>
+                    <a href='news-view.php?id={$row["id"]}'>
+                      <div class='me-2' style='width: 70px; height: 70px; background-color: gray;'></div>
+                    </a>
+                    <div class='d-flex flex-column justify-content-between'>
+                      <div>{$row["title"]}</div>
+                      <div>" . date_format(date_create($row["created_when"]),'d.m.Y') . "</div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mb-3">
-                <div class="d-flex">
-                  <div class="me-2" style="width: 70px; height: 70px; background-color: gray;"></div>
-                  <div class="d-flex flex-column justify-content-between">
-                    <div class="">О технологических работах в аналитическом сегменте данных КПЭ</div>
-                    <div class="">11.11.2021</div>
-                  </div>
-                </div>
-              </div>
+                </div>";
+              }
+              ?>
             </div>
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
               pills-contact-tab2

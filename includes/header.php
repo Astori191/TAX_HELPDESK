@@ -1,5 +1,10 @@
 <?php include_once './dbconnect.php'; ?>
-<?php session_start(); ?>
+<?php 
+session_start(); 
+if (!isset($_SESSION['login'])) {
+  header('Location: /signin.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en" class="h-100">
@@ -44,7 +49,7 @@
         <?php if (isset($_SESSION['login'])) {
           echo "<span class='navbar-text me-2 cur-user'>{$_SESSION["user_name"]} ({$_SESSION["role_name"]})</span>
           <span class='navbar-text'>
-            <a href='signin.php' class='logout-link'>Выйти</a>
+            <a href='logout.php' class='logout-link'>Выйти</a>
           </span>";
         }
 
