@@ -1,4 +1,4 @@
-<?php include './includes/header.php'?>
+<?php include './includes/header.php' ?>
 <?php
 $result = get_selected_news_post($conn, $_GET["id"]);
 ?>
@@ -12,19 +12,29 @@ $result = get_selected_news_post($conn, $_GET["id"]);
                 </div>
             </div>
         </div>
-        <div class="mb-3 mt-3">
-            <h4><?php echo $result["news_title"]?></h4>
-            <h4>Example heading <span class="badge bg-secondary">New</span></h4>
+        <div class="mt-3">
+            <p class="fs-3 mb-0 text-uppercase"><?php echo $result["news_category"] ?> <span class="badge bg-secondary">New</span></p>
+        </div>
+        <div class="mt-2">
+            <p class="fs-3 mb-0 text-primary fw-bold"><?php echo $result["news_title"] ?></p>
+            <p class="fs-3 mb-0 text-primary fw-bold"><?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y') ?></p>
         </div>
         <div class="mt-3">
-            <?php echo $result["news_content"]?>
+            <p class="fs-6 fw-light">Дата публикации: <?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y H:i:s') . ' ' . $result["user_name"] ?></p>
         </div>
         <div class="mt-3">
-            <?php echo $result["user_name"]?>
+            <img src="/includes/news/id_1_problem.jpg" style='width: 200px; height: 154px'>
         </div>
-    </div>    
+        <div class="mt-5 col-8">
+            <p class="fs-6 mb-0 fw-normal"><?php echo $result["news_content"] ?></p>
+        </div>
+        <div class="mt-3">
+            <a href="index.php" class="link-primary">Возврат к списку</a>
+        </div>
+
+    </div>
 </main>
 <div class="d-flex mt-auto p-2 justify-content-center">
     <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
-  </div>
+</div>
 <?php include './includes/footer.php'; ?>

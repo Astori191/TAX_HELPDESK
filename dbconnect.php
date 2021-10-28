@@ -49,16 +49,24 @@ function get_user($conn, $login, $password)
     return $res->fetch_assoc();
 }
 
-function get_news($conn){ 
+function get_news($conn, $news_type)
+{
     $query = "
     SELECT
-        news.id as id,
-        news.title as title,
-        news.content as content,
-        news.created_by as created_by,
-        news.created_when as created_when,
-        news.image_name as image_name
-    FROM news LIMIT 6";
+        news.id           as id,
+        news.news_type_id as nt_id,
+        news.title        as title,
+        news.content      as content,
+        news.created_by   as created_by,
+        news.created_when as created_when
+    FROM 
+        news    
+    LEFT JOIN
+        news_types ON news_types.id = news.news_type_id
+    WHERE
+        news.news_type_id = " . $news_type . "
+        ORDER BY created_when DESC
+        LIMIT 6";
 
     return mysqli_query($conn, $query);
 }
@@ -67,16 +75,19 @@ function get_selected_news_post($conn, $id)
 {
     $query = "
     SELECT 
-        news.id           as news_id,
-        news.title        as news_title,
-        news.content      as news_content,
-        news.created_by   as news_created_by,
-        news.created_when as news_created_when,
-        news.image_name   as news_image_name,
-        users.name        as user_name
+        news.id              as news_id,
+        news.news_type_id    as nt_id,
+        news.title           as news_title,
+        news.content         as news_content,
+        news.created_by      as news_created_by,
+        news.created_when    as news_created_when,
+        users.name           as user_name,
+        news_types.category  as news_category
     FROM news
         LEFT JOIN users 
             ON news.created_by = users.id
+        LEFT JOIN news_types
+            ON news.news_type_id = news_types.id
     WHERE
         news.id =" . $id;
 
