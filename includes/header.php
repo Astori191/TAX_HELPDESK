@@ -1,6 +1,6 @@
 <?php include_once './dbconnect.php'; ?>
-<?php 
-session_start(); 
+<?php
+session_start();
 if (!isset($_SESSION['login'])) {
   header('Location: /signin.php');
 }
@@ -19,6 +19,7 @@ if (!isset($_SESSION['login'])) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
   <title>Личный кабинет заявителя</title>
 </head>
 

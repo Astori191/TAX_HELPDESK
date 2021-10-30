@@ -13,11 +13,11 @@ $result = get_selected_news_post($conn, $_GET["id"]);
             </div>
         </div>
         <div class="mt-3">
-            <p class="fs-3 mb-0 text-uppercase"><?php echo $result["news_category"] ?> <span class="badge bg-secondary">New</span></p>
+            <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo $result["news_category"] ?></h2>
         </div>
         <div class="mt-2">
-            <p class="fs-3 mb-0 text-primary fw-bold"><?php echo $result["news_title"] ?></p>
-            <p class="fs-3 mb-0 text-primary fw-bold"><?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y') ?></p>
+            <h3 class="text-primary fw-bold" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo $result["news_title"] ?></h3>
+            <h3 class="text-primary fw-bold" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y') ?></h3>
         </div>
         <div class="mt-3">
             <p class="fs-6 fw-light">Дата публикации: <?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y H:i:s') . ' ' . $result["user_name"] ?></p>
@@ -29,7 +29,7 @@ $result = get_selected_news_post($conn, $_GET["id"]);
             <p class="fs-6 mb-0 fw-normal"><?php echo $result["news_content"] ?></p>
         </div>
         <div class="mt-3">
-            <a href="index.php" class="link-primary">Возврат к списку</a>
+            <a href="index.php" class="link-primary">Вернуться на главную</a>
         </div>
 
     </div>

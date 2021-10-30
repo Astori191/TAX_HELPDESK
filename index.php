@@ -30,14 +30,21 @@
             $result = get_news($conn, 1);
 
             while ($row = mysqli_fetch_array($result)) {
+              $image_name = "";
+              if ($row["nt_id"] == 1) {
+                $image_name = 'id_1_problem.jpg';
+              }
+              if ($row["nt_id"] == 2) {
+                $image_name = 'id_2_fixed.jpg';
+              }
               echo "
                 <div class='row mb-3'>
                   <div class='d-flex'>
                     <a href='news-view.php?id={$row["id"]}'>
-                      <div class='me-2' style='width: 70px; height: 70px; background-color: gray;'></div>
+                      <img class='me-2' style='width: 80px; height: 61px;' src='includes/news/{$image_name}'>
                     </a>
-                    <div class='d-flex flex-column justify-content-between'>
-                    <p class='h6'>{$row["title"]}</p>
+                    <div class='d-flex flex-column justify-content-between '>
+                      <h6 class='text-primary'>{$row["title"]}</h6>
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -54,10 +61,10 @@
                 <div class='row mb-3'>
                   <div class='d-flex'>
                     <a href='news-view.php?id={$row["id"]}'>
-                      <div class='me-2' style='width: 70px; height: 70px; background-color: gray;'></div>
+                      <img class='me-2' style='width: 70px; height: 70px;' src='includes/id_1_problem.jpg'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <p class='h6'>{$row["title"]}</p>
+                      <h6 class='text-primary'>{$row["title"]}</h6>
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -77,7 +84,7 @@
                       <div class='me-2' style='width: 70px; height: 70px; background-color: gray;'></div>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <p class='h6'>{$row["title"]}</p>
+                      <h6 class='text-primary'>{$row["title"]}</h6>
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
