@@ -13,7 +13,7 @@ $result = get_selected_news_post($conn, $_GET["id"]);
             </div>
         </div>
         <div class="mt-3">
-            <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo $result["news_category"] ?></h2>
+            <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo $result["news_heads_name"] ?></h2>
         </div>
         <div class="mt-2">
             <h3 class="text-primary fw-bold" style="font-family: 'Roboto Condensed', sans-serif;"><?php echo $result["news_title"] ?></h3>

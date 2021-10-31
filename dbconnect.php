@@ -53,29 +53,32 @@ function get_news($conn, $news_type)
 {
     $cond = "";
     if ($news_type == 1) {
-        $cond = "news.news_type_id = 1 OR news.news_type_id = 2";
+        $cond = "news.news_type_id = 1 OR news.news_type_id = 2 OR news.news_type_id = 3 OR news.news_type_id = 4";
     }
     if ($news_type == 2) {
-        $cond = "news.news_type_id = 3";
+        $cond = "news.news_type_id = 5 OR news.news_type_id = 6";
     }
     if ($news_type == 3) {
-        $cond = "news.news_type_id = 4";
+        $cond = "news.news_type_id = 7 OR news.news_type_id = 8";
     }
 
     $query = "
     SELECT
-        news.id           as id,
-        news.news_type_id as nt_id,
-        news.title        as title,
-        news.content      as content,
-        news.created_by   as created_by,
-        news.created_when as created_when
+        news.id            as id,
+        news.news_type_id  as nt_id,
+        news.title         as title,
+        news.content       as content,
+        news.created_by    as created_by,
+        news.created_when  as created_when,
+        news_types.news_head_id as news_types_head_id
     FROM 
         news    
-    LEFT JOIN
-        news_types ON news_types.id = news.news_type_id
+    LEFT JOIN news_types 
+        ON news.news_type_id = news_types.id
+    LEFT JOIN news_heads
+        ON news_types.news_head_id = news_heads.id
     WHERE
-        {$cond}
+        {$cond} AND news_types.news_head_id = {$news_type}
         ORDER BY created_when DESC
         LIMIT 6";
 
@@ -86,19 +89,22 @@ function get_selected_news_post($conn, $id)
 {
     $query = "
     SELECT 
-        news.id              as news_id,
-        news.news_type_id    as nt_id,
-        news.title           as news_title,
-        news.content         as news_content,
-        news.created_by      as news_created_by,
-        news.created_when    as news_created_when,
-        users.name           as user_name,
-        news_types.category  as news_category
+        news.id                 as news_id,
+        news.news_type_id       as nt_id,
+        news.title              as news_title,
+        news.content            as news_content,
+        news.created_by         as news_created_by,
+        news.created_when       as news_created_when,
+        users.name              as user_name,
+        news_types.description  as news_description,
+        news_heads.name         as news_heads_name
     FROM news
         LEFT JOIN users 
             ON news.created_by = users.id
         LEFT JOIN news_types
             ON news.news_type_id = news_types.id
+        LEFT JOIN news_heads
+            ON news_types.news_head_id = news_heads.id
     WHERE
         news.id =" . $id;
 
@@ -136,6 +142,18 @@ function get_maintenances($conn, $category_id)
             maintenances.part_of = {$category_id}
         ";
 
+    return mysqli_query($conn, $query);
+}
+
+function get_priorities($conn)
+{
+    $query = "
+        SELECT
+            priorities.id,
+            priorities.kind
+        FROM
+            priorities
+    ";
     return mysqli_query($conn, $query);
 }
 

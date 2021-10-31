@@ -147,7 +147,6 @@
                 while ($row2 = mysqli_fetch_array($main_res)) {
                   echo "<option value='{$row2["id"]}'>{$row2["name"]}</option>";
                 }
-
                 echo "</optgroup>";
               }
               ?>
@@ -158,7 +157,14 @@
             <label class="form-label">Приоритет</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Выберите из списка</option>
-              <option value="1">One</option>
+
+              <?php
+              $priorities = get_priorities($conn);
+              while ($row = mysqli_fetch_array($priorities)) {
+                echo "<option value='{$row["id"]}'>{$row["kind"]}</option>";
+              }
+              ?>
+
             </select>
           </div>
           <div class="mb-3">
@@ -166,8 +172,11 @@
             <textarea class="form-control txtarea" id="exampleFormControlTextarea1" rows="4"></textarea>
           </div>
           <div class="mb-3">
-            <label class="form-label">Заявитель</label>
-            <input type="text" class="form-control" id="formGroupExampleInput">
+            <?php if (isset($_SESSION['login'])) {
+              echo "<label class='form-label'>Заявитель</label>
+              <span class='input-group-text' id='inputGroup-sizing-default'>{$_SESSION["user_name"]} </span>";
+            }
+            ?>
           </div>
         </form>
       </div>

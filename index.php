@@ -31,17 +31,23 @@
 
             while ($row = mysqli_fetch_array($result)) {
               $image_name = "";
-              if ($row["nt_id"] == 1) {
+              if ($row["nt_id"] == 1 || $row["nt_id"] == 3) {
                 $image_name = 'id_1_problem.jpg';
               }
-              if ($row["nt_id"] == 2) {
+              if ($row["nt_id"] == 2 || $row["nt_id"] == 4) {
+                $image_name = 'id_2_fixed.jpg';
+              }
+              if ($row["nt_id"] == 3 || $row["nt_id"] == 3) {
+                $image_name = 'id_1_problem.jpg';
+              }
+              if ($row["nt_id"] == 4 || $row["nt_id"] == 4) {
                 $image_name = 'id_2_fixed.jpg';
               }
               echo "
                 <div class='row mb-3'>
                   <div class='d-flex'>
                     <a href='news-view.php?id={$row["id"]}'>
-                      <img class='me-2' style='width: 80px; height: 61px;' src='includes/news/{$image_name}'>
+                      <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between '>
                       <h6 class='text-primary'>{$row["title"]}</h6>
@@ -57,11 +63,18 @@
             $result = get_news($conn, 2);
 
             while ($row = mysqli_fetch_array($result)) {
+              $image_name = "";
+              if ($row["nt_id"] == 5) {
+                $image_name = 'id_5_fixed.jpg';
+              }
+              if ($row["nt_id"] == 6) {
+                $image_name = 'id_6_fixed.jpg';
+              }
               echo "
                 <div class='row mb-3'>
                   <div class='d-flex'>
                     <a href='news-view.php?id={$row["id"]}'>
-                      <img class='me-2' style='width: 70px; height: 70px;' src='includes/id_1_problem.jpg'>
+                      <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
                       <h6 class='text-primary'>{$row["title"]}</h6>
@@ -77,11 +90,18 @@
             $result = get_news($conn, 3);
 
             while ($row = mysqli_fetch_array($result)) {
+              $image_name = "";
+              if ($row["nt_id"] == 7) {
+                $image_name = 'id_7_fixed.jpg';
+              }
+              if ($row["nt_id"] == 8) {
+                $image_name = 'id_8_info.jpg';
+              }
               echo "
                 <div class='row mb-3'>
                   <div class='d-flex'>
                     <a href='news-view.php?id={$row["id"]}'>
-                      <div class='me-2' style='width: 70px; height: 70px; background-color: gray;'></div>
+                      <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
                       <h6 class='text-primary'>{$row["title"]}</h6>
@@ -92,6 +112,9 @@
             }
             ?>
           </div>
+        </div>
+        <div style="text-align: right">
+          <a href="index.php" class="link-primary">Все новости</a>
         </div>
       </div>
       <div class="col-1"></div>
