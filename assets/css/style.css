@@ -57,6 +57,13 @@
     max-height: 120px;
 }
 
+.news_head{
+    color:#0066B3 !important;
+}
+
+.link-primary{
+    color:#0066B3 !important;
+}
 /*main > .container {
     padding: 60px 15px 0;
 }*/

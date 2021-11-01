@@ -133,7 +133,7 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label class="form-label">Категория</label>
+            <label class="form-label fw-bold">Категория</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Выберите из списка</option>
 
@@ -154,7 +154,7 @@
             </select>
           </div>
           <div class="mb-3">
-            <label class="form-label">Приоритет</label>
+            <label class="form-label fw-bold">Приоритет</label>
             <select class="form-select" aria-label="Default select example">
               <option selected>Выберите из списка</option>
 
@@ -168,13 +168,13 @@
             </select>
           </div>
           <div class="mb-3">
-            <label class="form-label">Описание проблемы</label>
+            <label class="form-label fw-bold">Описание проблемы</label>
             <textarea class="form-control txtarea" id="exampleFormControlTextarea1" rows="4"></textarea>
           </div>
           <div class="mb-3">
             <?php if (isset($_SESSION['login'])) {
-              echo "<label class='form-label'>Заявитель</label>
-              <span class='input-group-text' id='inputGroup-sizing-default'>{$_SESSION["user_name"]} </span>";
+              echo "<label class='form-label fw-bold'>Автор</label>
+              <span class='input-group-text' id='inputGroup-sizing-default'>{$_SESSION["user_name"]} ({$_SESSION["login"]}) </span>";
             }
             ?>
           </div>

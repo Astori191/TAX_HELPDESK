@@ -14,7 +14,7 @@
       <div class="col-6 ps-0">
         <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">НОВОСТИ АИС</button>
+            <button class=" nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">НОВОСТИ АИС</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">МАССОВЫЕ ПРОБЛЕМЫ </button>
@@ -50,7 +50,8 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between '>
-                      <h6 class='text-primary'>{$row["title"]}</h6>
+                      <h6 class='news_head'>{$row["title"]}</h6>
+                      
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -77,7 +78,7 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <h6 class='text-primary'>{$row["title"]}</h6>
+                      <h6 class='news_head'>{$row["title"]}</h6>
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -104,7 +105,7 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <h6 class='text-primary'>{$row["title"]}</h6>
+                      <h6 class='news_head'>{$row["title"]}</h6>
                       <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
