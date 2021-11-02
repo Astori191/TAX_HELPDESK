@@ -53,13 +53,13 @@ function get_news($conn, $news_type)
 {
     $cond = "";
     if ($news_type == 1) {
-        $cond = "news.news_type_id = 1 OR news.news_type_id = 2 OR news.news_type_id = 3 OR news.news_type_id = 4";
+        $cond = "news.news_type_id IN ('1', '2','3','4')";
     }
     if ($news_type == 2) {
-        $cond = "news.news_type_id = 5 OR news.news_type_id = 6";
+        $cond = "news.news_type_id IN ('5', '6')";
     }
     if ($news_type == 3) {
-        $cond = "news.news_type_id = 7 OR news.news_type_id = 8";
+        $cond = "news.news_type_id IN ('1', '2')";
     }
 
     $query = "
@@ -157,29 +157,71 @@ function get_priorities($conn)
     return mysqli_query($conn, $query);
 }
 
-/* function get_all_requests($conn)
+
+function get_selected_request($conn, $id)
 {
     $query = "
-    SELECT
-        requests.id as requests_id,
-        requests.created_when as requests_created_when,
-        requests.priority_id as requests_priority_id,
-        requests.maintenance_id as requests_maintenance_id,
-        requests.record as requests_record,
-        requests.phase_id as requests_phase_id,
-        requests.assignee_id as requests_assignee_id,
-        requests.created_by_id as requests_created_by_id
-    FROM requests
+        SELECT
+            requests.id as request_id,
+            requests.created_when as requests_created_when,
+            requests.maintenance_id as requests_maintenance_id,
+            requests.priority_id as requests_priority_id,
+            requests.record as requests_record,
+            requests.phase_id as requests_phase_id,
+            requests.assignee_id as requests_assignee_id,
+            requests.created_by as requests_created_by,
+            maintenances.name as maintenances_name,
+            priorities.kind as priorities_kind,
+            phases.name as phases_name,
+            users.name as users_name
+        FROM
+            requests
+        LEFT JOIN maintenances
+            ON requests.maintenance_id = maintenances.id
         LEFT JOIN priorities
             ON requests.priority_id = priorities.id
-        LEFT JOIN 
         LEFT JOIN phases
             ON requests.phase_id = phases.id
         LEFT JOIN users
             ON requests.assignee_id = users.id
-    ";
+    WHERE 
+        requests.id = {$id}
+        ";
+
+    $res = $conn->query($query);
+    return $res->fetch_assoc();
 }
- */
+
+
+function get_all_requests($conn)
+{
+    $query = "
+        SELECT
+            requests.id as request_id,
+            requests.created_when as requests_created_when,
+            requests.maintenance_id as requests_maintenance_id,
+            requests.priority_id as requests_priority_id,
+            requests.record as requests_record,
+            requests.phase_id as requests_phase_id,
+            requests.assignee_id as requests_assignee_id,
+            requests.created_by as requests_created_by,
+            maintenances.name as maintenances_name,
+            priorities.kind as priorities_kind,
+            phases.name as phases_name,
+            users.name as users_name
+        FROM
+            requests
+        LEFT JOIN maintenances
+            ON requests.maintenance_id = maintenances.id
+        LEFT JOIN priorities
+            ON requests.priority_id = priorities.id
+        LEFT JOIN phases
+            ON requests.phase_id = phases.id
+        LEFT JOIN users
+            ON requests.assignee_id = users.id
+        ORDER BY requests_created_when DESC
+        ";
+}
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = db_open();
