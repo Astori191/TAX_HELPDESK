@@ -67,3 +67,12 @@
 /*main > .container {
     padding: 60px 15px 0;
 }*/
+
+.container-fluid{
+    width: 95% !important;
+    min-width: 980px !important;
+    margin-top: 0px !important;
+    margin-right: auto !important;
+    margin-bottom: 0px !important;
+    margin-left: auto !important; 
+}

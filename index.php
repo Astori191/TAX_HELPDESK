@@ -79,7 +79,7 @@
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
                       <h6 class='news_head'>{$row["title"]}</h6>
-                      <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
+                      <span>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</span>
                     </div>
                   </div>
                 </div>";

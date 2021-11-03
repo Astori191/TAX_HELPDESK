@@ -1,7 +1,7 @@
 <?php include './includes/header.php' ?>
 <?php
 /* $_GET["id"] */
-$result = get_selected_request($conn, 1);
+$result = get_selected_request($conn, $_GET["id"]);
 ?>
 <main class="flex-shrink-0">
     <div class="container">

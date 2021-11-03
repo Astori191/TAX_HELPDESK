@@ -1,6 +1,6 @@
-<?php include './includes/header.php' ?>
+<?php include './includes/header-requests.php' ?>
 <main class="flex-shrink-0">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row bottom-line pb-3">
       <div class="col">
         <div class="d-flex p-2 align-items-center mt-2">
@@ -16,8 +16,6 @@
           Создать обращение
         </button>
         <button class="btn btn-primary" type="button">Обновить</button>
-        <a href="request-view.php" class="link-primary">Обращение</a>
-
         <button class="btn btn-primary" type="button">Фильтр обращений</button>
       </div>
     </div>
@@ -25,31 +23,37 @@
       <table class="table table-bordered table-striped table-hover mt-4">
         <thead>
           <tr>
-            <th scope="col">Номер</th>
-            <th scope="col">Дата создания</th>
-            <th scope="col">Приоритет</th>
-            <th scope="col">Наименование услуги</th>
-            <th scope="col">Описание</th>
-            <th scope="col">Этап</th>
-            <th scope="col">Исполнитель</th>
-            <th scope="col">Заявитель</th>
+            <th scope="col" class="text-center">Номер</th>
+            <th scope="col" class="text-center">Дата создания</th>
+            <th scope="col" class="text-center">Приоритет</th>
+            <th scope="col" class="text-center">Наименование услуги</th>
+            <th scope="col" class="text-center">Описание</th>
+            <th scope="col" class="text-center">Этап</th>
+            <th scope="col" class="text-center">Исполнитель</th>
+            <th scope="col" class="text-center">Заявитель</th>
           </tr>
         </thead>
         <tbody>
+          <?php
+          $result = get_all_requests($conn);
+
+          while ($row = mysqli_fetch_array($result)) {
+            echo "
           <tr>
-            <th scope="row">1</th>
-            <td>21.12.2012</td>
-            <td>Высокий</td>
-            <td>Рабочие станции</td>
-            <td>Не включается компьютер</td>
-            <td>Выполнение</td>
-            <td>Степанов Алексей Сергеевич</td>
-            <td>Гаранина Мария Петровна</td>
-          </tr>
+            <th scope='row'><a href='request-view.php?id={$row["request_id"]}' class='text-decoration-none text-'>{$row["request_id"]}</a></th>
+            <td>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
+            <td>{$row["priorities_kind"]}</td>
+            <td>{$row["maintenances_name"]}</td>
+            <td>{$row["requests_record"]}</td>
+            <td>{$row["phases_name"]}</td>
+            <td>{$row["users_name"]}</td>
+            <td>{$row["requests_created_by"]}</td>
+          </tr>";
+          }
+          ?>
         </tbody>
       </table>
     </div>
-  </div>
   </div>
 </main>
 <!-- Modal -->

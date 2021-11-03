@@ -59,7 +59,7 @@ function get_news($conn, $news_type)
         $cond = "news.news_type_id IN ('5', '6')";
     }
     if ($news_type == 3) {
-        $cond = "news.news_type_id IN ('1', '2')";
+        $cond = "news.news_type_id IN ('7', '8')";
     }
 
     $query = "
@@ -221,6 +221,7 @@ function get_all_requests($conn)
             ON requests.assignee_id = users.id
         ORDER BY requests_created_when DESC
         ";
+    return mysqli_query($conn, $query);
 }
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
