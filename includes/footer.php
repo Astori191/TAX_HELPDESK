@@ -1,10 +1,12 @@
   <footer class="footer py-3 bg-light">
     <div class="container">
-      <span class="text-muted">Релиз 21.9.29.1 &copy Портал технической поддержки ИФНС России № 30 по г. Москве</span>
+      <span class="text-muted">Релиз 21.11.08.1 &copy Портал технической поддержки ИФНС России № 30 по г. Москве</span>
     </div>
   </footer>
 
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-<?php db_close($conn); ?>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </body>
+
+  </html>
+  <?php db_close($conn); ?>

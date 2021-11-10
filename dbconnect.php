@@ -1,18 +1,10 @@
 <?php
 
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
 function db_open()
 {
     $servername = "localhost";
-    $username = "root";
-    $password = "root";
+    $username = "Master";
+    $password = "wyyCdpXf7l8lS2fy";
     $database = "taxhelpdesk";
 
     // Create connection
@@ -64,12 +56,12 @@ function get_news($conn, $news_type)
 
     $query = "
     SELECT
-        news.id            as id,
-        news.news_type_id  as nt_id,
-        news.title         as title,
-        news.content       as content,
-        news.created_by    as created_by,
-        news.created_when  as created_when,
+        news.id                 as id,
+        news.news_type_id       as nt_id,
+        news.title              as title,
+        news.content            as content,
+        news.created_by         as created_by,
+        news.created_when       as created_when,
         news_types.news_head_id as news_types_head_id
     FROM 
         news    
@@ -80,7 +72,7 @@ function get_news($conn, $news_type)
     WHERE
         {$cond} AND news_types.news_head_id = {$news_type}
         ORDER BY created_when DESC
-        LIMIT 6";
+        LIMIT 7";
 
     return mysqli_query($conn, $query);
 }
@@ -121,7 +113,7 @@ function get_maintenance_categories($conn)
 {
     $query = "
         SELECT
-            maintenances_categories.id as maintenances_categories_id,
+            maintenances_categories.id   as maintenances_categories_id,
             maintenances_categories.type as maintenances_categories_type
         FROM 
             maintenances_categories
@@ -162,18 +154,18 @@ function get_selected_request($conn, $id)
 {
     $query = "
         SELECT
-            requests.id as request_id,
-            requests.created_when as requests_created_when,
+            requests.id             as request_id,
+            requests.created_when   as requests_created_when,
             requests.maintenance_id as requests_maintenance_id,
-            requests.priority_id as requests_priority_id,
-            requests.record as requests_record,
-            requests.phase_id as requests_phase_id,
-            requests.assignee_id as requests_assignee_id,
-            requests.created_by as requests_created_by,
-            maintenances.name as maintenances_name,
-            priorities.kind as priorities_kind,
-            phases.name as phases_name,
-            users.name as users_name
+            requests.priority_id    as requests_priority_id,
+            requests.record         as requests_record,
+            requests.phase_id       as requests_phase_id,
+            requests.assignee_id    as requests_assignee_id,
+            requests.created_by     as requests_created_by,
+            maintenances.name       as maintenances_name,
+            priorities.kind         as priorities_kind,
+            phases.name             as phases_name,
+            users.name              as users_name
         FROM
             requests
         LEFT JOIN maintenances
@@ -197,18 +189,18 @@ function get_all_requests($conn)
 {
     $query = "
         SELECT
-            requests.id as request_id,
-            requests.created_when as requests_created_when,
+            requests.id             as request_id,
+            requests.created_when   as requests_created_when,
             requests.maintenance_id as requests_maintenance_id,
-            requests.priority_id as requests_priority_id,
-            requests.record as requests_record,
-            requests.phase_id as requests_phase_id,
-            requests.assignee_id as requests_assignee_id,
-            requests.created_by as requests_created_by,
-            maintenances.name as maintenances_name,
-            priorities.kind as priorities_kind,
-            phases.name as phases_name,
-            users.name as users_name
+            requests.priority_id    as requests_priority_id,
+            requests.record         as requests_record,
+            requests.phase_id       as requests_phase_id,
+            requests.assignee_id    as requests_assignee_id,
+            requests.created_by     as requests_created_by,
+            maintenances.name       as maintenances_name,
+            priorities.kind         as priorities_kind,
+            phases.name             as phases_name,
+            users.name              as users_name
         FROM
             requests
         LEFT JOIN maintenances
@@ -224,5 +216,61 @@ function get_all_requests($conn)
     return mysqli_query($conn, $query);
 }
 
+function get_messages($conn, $id)
+{
+    $query = "
+    SELECT 
+        requests_history.id              as rh_id,
+        requests_history.request_id      as rh_request_id,
+        requests_history.message_type_id as rh_message_type,
+        requests_history.message         as rh_message,
+        requests_history.created_by      as rh_created_by,
+        requests_history.mcreated_when   as rh_mcreated_when,
+        requests.maintenance_id          as requests_maintenance_id,
+        maintenances.name                as maintenances_name,
+        phases.name                      as phases_name,
+        users.name                       as users_name,
+        users.login                      as users_login
+    FROM 
+        requests_history
+    LEFT JOIN requests 
+        ON requests_history.request_id = requests.id
+    LEFT JOIN users
+        ON requests_history.created_by = users.id
+    LEFT JOIN phases
+        ON requests_history.message_type_id = phases.id
+    LEFT JOIN maintenances
+        ON requests.maintenance_id = maintenances.id
+    WHERE 
+        requests_history.request_id = {$id}
+    ";
+    return mysqli_query($conn, $query);
+}
+
+function take_on_exec($conn)
+{
+    $query = "";
+    $conn->query($query);
+}
+
+function get_phases($conn)
+{
+    $query = "
+    SELECT 
+        phases.id,
+        phases.name
+    FROM 
+        phases
+        WHERE phases.id != 1 AND phases.id != 2
+    ";
+    return mysqli_query($conn, $query);
+}
+
+
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = db_open();
+
+/* <form class="form-floating">
+  <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
+  <label for="floatingInputInvalid">Invalid input</label>
+</form> */

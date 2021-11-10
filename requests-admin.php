@@ -1,114 +1,61 @@
-<?php include './includes/header.php'?>
-  <main class="flex-shrink-0">
-    <div class="container">
-      <div class="row bottom-line pb-3">
-        <div class="col">
-          <div class="d-flex p-2 align-items-center mt-2">
-            <img src="assets/img/Emblem_of_the_Federal_Tax_Service.svg" class="logo me-3" />
-            <!-- <div class="logo-text">ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br> ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</div> -->
-            <h4>ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br>ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</h4>
-          </div>
-        </div>
-      </div>
-      <div class="row pt-3 bottom-line pb-3">
-        <div class="d-grid gap-2 d-md-block">
-          <button class="btn btn-primary" type="button">Взять в работу</button> 
-          <button class="btn btn-primary" type="button">Обновить</button>
-          <button class="btn btn-primary" type="button">Фильтр обращений</button>
-        </div>
-      </div>
-        <div class="request-table">
-          <table class="table table-bordered table-striped table-hover mt-4">
-            <thead>
-              <tr>
-                <th scope="col">Номер</th>
-                <th scope="col">Дата создания</th>
-                <th scope="col">Категория</th>
-                <th scope="col">Описание</th>
-                <th scope="col">Этап</th>
-                <th scope="col">Исполнитель</th>
-                <th scope="col">Заявитель</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>21.12.2012</td>
-                <td>Рабочие станции</td>
-                <td>Не включается компьютер</td>
-                <td>Выполнение</td>
-                <td>Степанов Алексей Сергеевич</td>
-                <td>Гаранина Мария Петровна</td>
-              </tr>
-            </tbody>
-          </table>
+<?php include './includes/header-requests.php' ?>
+<main class="flex-shrink-0">
+  <div class="container-fluid">
+    <div class="row bottom-line pb-3">
+      <div class="col">
+        <div class="d-flex p-2 align-items-center mt-2">
+          <img src="assets/img/Emblem_of_the_Federal_Tax_Service.svg" class="logo me-3" />
+          <!-- <div class="logo-text">ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br> ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</div> -->
+          <h4>ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br>ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</h4>
         </div>
       </div>
     </div>
-  </main>
+    <div class="row pt-3 bottom-line pb-3">
+      <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-primary" type="button" onClick="window.location.reload( true );">Обновить</button>
+        <button class="btn btn-primary" type="button">Фильтр обращений</button>
+      </div>
+    </div>
+    <div class="request-table">
+      <table class="table table-bordered table-striped table-hover mt-4">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Номер</th>
+            <th scope="col" class="text-center">Дата создания</th>
+            <th scope="col" class="text-center">Приоритет</th>
+            <th scope="col" class="text-center">Наименование услуги</th>
+            <th scope="col" class="text-center">Описание</th>
+            <th scope="col" class="text-center">Этап</th>
+            <th scope="col" class="text-center">Исполнитель</th>
+            <th scope="col" class="text-center">Автор</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          $result = get_all_requests($conn);
+
+          while ($row = mysqli_fetch_array($result)) {
+            // if ($row["requests_phase_id"] == 1) {
+            echo "
+              <tr>
+                <th scope='row'><a href='request-processing.php?id={$row["request_id"]}' class='text-decoration-none text-'>{$row["request_id"]}</a></th>
+                <td>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
+                <td>{$row["priorities_kind"]}</td>
+                <td>{$row["maintenances_name"]}</td>
+                <td>{$row["requests_record"]}</td>
+                <td>{$row["phases_name"]}</td>
+                <td>{$row["users_name"]}</td>
+                <td>{$row["requests_created_by"]}</td>
+              </tr>";
+            // }
+          }
+          ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+</main>
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -159,7 +106,7 @@
     </div>
   </div>
 </div>
-  <div class="d-flex mt-auto p-2 justify-content-center">
-    <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
-  </div>
+<div class="d-flex mt-auto p-2 justify-content-center">
+  <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
+</div>
 <?php include './includes/footer.php'; ?>

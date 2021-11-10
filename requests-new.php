@@ -15,7 +15,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
           Создать обращение
         </button>
-        <button class="btn btn-primary" type="button">Обновить</button>
+        <button class="btn btn-primary" type="button" onClick="window.location.reload( true );">Обновить</button>
         <button class="btn btn-primary" type="button">Фильтр обращений</button>
       </div>
     </div>
@@ -23,14 +23,14 @@
       <table class="table table-bordered table-striped table-hover mt-4">
         <thead>
           <tr>
-            <th scope="col" class="text-center">Номер</th>
+            <th scope="col" class="text-center" width="50">Номер</th>
             <th scope="col" class="text-center">Дата создания</th>
             <th scope="col" class="text-center">Приоритет</th>
             <th scope="col" class="text-center">Наименование услуги</th>
             <th scope="col" class="text-center">Описание</th>
             <th scope="col" class="text-center">Этап</th>
-            <th scope="col" class="text-center">Исполнитель</th>
-            <th scope="col" class="text-center">Заявитель</th>
+            <th scope="col" class="text-center" width="300">Исполнитель</th>
+            <th scope="col" class="text-center">Автор</th>
           </tr>
         </thead>
         <tbody>

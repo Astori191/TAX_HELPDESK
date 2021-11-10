@@ -70,9 +70,16 @@
 
 .container-fluid{
     width: 95% !important;
-    min-width: 980px !important;
-    margin-top: 0px !important;
+/*    min-width: 980px !important;
+     margin-top: 0px !important;
     margin-right: auto !important;
     margin-bottom: 0px !important;
-    margin-left: auto !important; 
+    margin-left: auto !important;  */
 }
+
+.border{
+    border: 2px solid #DCDCDC !important;
+    border-radius: 10px !important;;
+}
+
+
