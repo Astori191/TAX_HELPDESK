@@ -266,6 +266,44 @@ function get_phases($conn)
     return mysqli_query($conn, $query);
 }
 
+function add_request_history_item($conn, $request_id, $message_type_id, $message, $created_by, $created_when)
+{
+    $query = "
+    INSERT INTO `requests_history` (`id`, `request_id`, `message_type_id`, `message`, `created_by`, `mcreated_when`) 
+    VALUES (NULL, '$request_id', '$message_type_id', '$message', '$created_by', '$created_when')";
+
+    return mysqli_query($conn, $query);
+}
+
+function change_request_stage($conn, $stage_id, $request_id)
+{
+    $query = "
+    UPDATE `requests` SET `phase_id` = '$stage_id' WHERE `id` = '$request_id'";
+    return mysqli_query($conn, $query);
+}
+
+function take_request_on_execution($conn, $prequest_id, $pmessage_type_id, $pnew_message, $pcreated_by, $pcreated_when)
+{
+    $query = "
+    INSERT INTO `requests_history` (`id`, `request_id`, `message_type_id`, `message`, `created_by`, `mcreated_when`) 
+    VALUES (NULL, '$prequest_id', '$pmessage_type_id', '$pnew_message', '$pcreated_by', '$pcreated_when')";
+    return mysqli_query($conn, $query);
+}
+
+function change_request_stage_on_execution($conn, $pcreated_by, $prequest_id)
+{
+    $query = "
+    UPDATE `requests` SET `phase_id` = '2', `assignee_id` = '$pcreated_by' WHERE `id` = '$prequest_id'
+    ";
+    return mysqli_query($conn, $query);
+}
+
+
+
+
+
+
+
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = db_open();

@@ -123,7 +123,7 @@ $messages = get_messages($conn, $_GET["id"]);
                         <p class='text-start'>{$row["rh_message"]} {$row["rh_request_id"]}</p>
                     </div>
                 </div>";
-                    } else if ($row["rh_message_type"] == 2 || $row["rh_message_type"] == 3) {
+                    } else {
                         echo "
                 <div class='modal-body'>
                     <div class='mb-3'>

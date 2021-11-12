@@ -21,8 +21,8 @@ $change_phase = get_phases($conn, $_GET["id"]);
                 <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;">Обращение <?php echo $result["request_id"] ?></h2>
             </div>
             <div class="col-5 text-end">
-                <div class="d-flex flex-row-reverse bd-highlight">
-                    <div class=" bd-highlight">
+                <div class="d-flex flex-row-reverse bd-highlight ">
+                    <div class="bd-highlight ">
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 Перейти на следующий этап
@@ -31,11 +31,13 @@ $change_phase = get_phases($conn, $_GET["id"]);
                                 <?php
                                 while ($row = mysqli_fetch_array($change_phase)) {
                                     echo
-                                    "<li><a class='dropdown-item' href='#' data-bs-target='#exampleModalToggle' data-bs-toggle='modal'>{$row["name"]}</a></li>";
+                                    "<li value ='{$row["id"]}'><a class='dropdown-item' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
+                                    data-bs-toggle='modal'>{$row["name"]}</a></li>";
                                 }
                                 ?>
                             </ul>
                         </div>
+
                     </div>
                     <div class="col">
                     </div>
@@ -115,6 +117,12 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         </div>
                     </div>
                 </div>
+                <div class="row mt-3">
+                    <div class="col-8">
+                        <a class="btn btn-primary" href="take_exec_request.php?id=<?php echo $_GET["id"] ?>" class="link-primary">Взять в работу</a>
+                        <a class="btn btn-primary" href="requests-admin.php">Вернуться к обращениям</a>
+                    </div>
+                </div>
             </div>
             <div class="col"></div>
             <div class="col-5">
@@ -127,7 +135,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                             <p class='text-start mb-0'>Услуга: {$row["maintenances_name"]}</p>
                             <p class='text-start'>{$row["rh_message"]} {$row["rh_request_id"]}</p>
                         </div>";
-                    } else if ($row["rh_message_type"] == 2 || $row["rh_message_type"] == 3) {
+                    } else {
                         echo "
                     <div class='row mb-3 border'>
                         <p class='text-start text-success fw-bold'>{$row["users_name"]} ({$row["users_login"]}) " . date_format(date_create($row["rh_mcreated_when"]), 'd.m.Y H:i:s') . "</p>
@@ -141,44 +149,44 @@ $change_phase = get_phases($conn, $_GET["id"]);
             </div>
         </div>
         <div class="mt-3">
-            <a class="btn btn-primary" href="take_exec_request.php?id=<?php echo $_GET["id"] ?>" class="link-primary">Взять в работу</a>
-            <a class="btn btn-primary" href="requests-admin.php">Вернуться к обращениям</a>
+
         </div>
     </div>
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Перейти на следующий этап</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- MODAL -->
+    <?php
+    $change_phase = get_phases($conn, $_GET["id"]);
+    while ($row = mysqli_fetch_array($change_phase)) {
+        echo
+        "<div class='modal fade' id='exampleModalToggle{$row['id']}' aria-hidden='true' aria-labelledby='exampleModalToggleLabel' tabindex='-1'>
+        <div class='modal-dialog modal-dialog-centered modal-lg'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h5 class='modal-title' id='exampleModalToggleLabel'>Перейти на этап: {$row['name']}</h5>
+                    <button type='hidden' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Комментарии</label>
-                    </div>
+                <div class='modal-body'>
+                    <form method='post' action='change_request_phase.php'>
+                        <div class='form-floating'>
+                            <textarea class='form-control' name='new_msg' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'></textarea>
+                            <label for='floatingTextarea2'>Комментарии</label>
+                        </div>
+                        <div class='input-group '>
+                            <input type='hidden' class='form-control' name='msg_type' value='{$row['id']}'>
+                        </div>
+                        <div class='input-group '>
+                            <input type='hidden' class='form-control' name='req_id' value='{$_GET["id"]}'>
+                        </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Далее</button>
+                <div class='modal-footer'>
+                    <button type='submit' class='btn btn-primary'>Отправить</button>
                 </div>
+                </form>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Прикрепления</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Назад</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div>";
+    }
+    ?>
+    <!-- MODAL END -->
 </main>
 <div class="d-flex mt-auto p-2 justify-content-center">
     <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
