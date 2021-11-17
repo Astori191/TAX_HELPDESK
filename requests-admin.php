@@ -16,27 +16,28 @@
         <button class="btn btn-primary" type="button">Фильтр обращений</button>
       </div>
     </div>
-    <div class="request-table">
-      <table class="table table-bordered table-striped table-hover mt-4">
-        <thead>
-          <tr>
-            <th scope="col" class="text-center">Номер</th>
-            <th scope="col" class="text-center">Дата создания</th>
-            <th scope="col" class="text-center">Приоритет</th>
-            <th scope="col" class="text-center">Наименование услуги</th>
-            <th scope="col" class="text-center">Описание</th>
-            <th scope="col" class="text-center">Этап</th>
-            <th scope="col" class="text-center">Исполнитель</th>
-            <th scope="col" class="text-center">Автор</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $result = get_all_requests($conn);
+    <div class="row">
+      <div class="table-responsive p-0">
+        <table class="table table-bordered table-striped table-hover mt-4">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Номер</th>
+              <th scope="col" class="text-center">Дата создания</th>
+              <th scope="col" class="text-center">Приоритет</th>
+              <th scope="col" class="text-center">Наименование услуги</th>
+              <th scope="col" class="text-center">Описание</th>
+              <th scope="col" class="text-center">Этап</th>
+              <th scope="col" class="text-center">Исполнитель</th>
+              <th scope="col" class="text-center">Автор</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $result = get_all_requests($conn);
 
-          while ($row = mysqli_fetch_array($result)) {
-            // if ($row["requests_phase_id"] == 1) {
-            echo "
+            while ($row = mysqli_fetch_array($result)) {
+              // if ($row["requests_phase_id"] == 1) {
+              echo "
               <tr>
                 <th scope='row'><a href='request-processing.php?id={$row["request_id"]}' class='text-decoration-none text-'>{$row["request_id"]}</a></th>
                 <td>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
@@ -47,13 +48,13 @@
                 <td>{$row["users_name"]}</td>
                 <td>{$row["requests_created_by"]}</td>
               </tr>";
-            // }
-          }
-          ?>
-        </tbody>
-      </table>
+              // }
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
   </div>
 </main>
 <!-- Modal -->

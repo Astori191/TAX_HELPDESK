@@ -11,33 +11,45 @@
     /*background-color: gray;*/
 }
 
-.section-logo-main{
-    width: 70px;
-    height: 70px;  
-}
-
 .logo-text {
-    font-family: Roboto;
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
 }
 
-.h-font{
-    font-family: 'Roboto', sans-serif;
-}
-
 .nav-link-my {
     color: #CBFBFF !important;
 }
+.nav-item-my {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
+.main-sections {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 16pt;
+}
+
+.np-nav-link-my{
+    color: black;
+}
+
+.np-nav-item-myactive{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 16pt;
+}
+
 
 .navbar-text {
     color: #CBFBFF !important;
 } 
 
 .bottom-line {
-    border-bottom: 3px solid #C6E6FF;
+    border-bottom: 2px solid #C6E6FF;
 }
 
 .right-section{
@@ -49,7 +61,7 @@
     background-color: #0066B3 !important;
 }
 
- .text-muted{
+.text-muted{
     color: #CBFBFF !important;
 } 
 
@@ -77,9 +89,87 @@
     margin-left: auto !important;  */
 }
 
+.main-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 22pt;
+}
+
+
 .border{
     border: 2px solid #DCDCDC !important;
     border-radius: 10px !important;;
 }
+
+.table .dots {
+    font-size: 12pt;
+    position: relative;
+    width: 300px;
+  }
+  
+  .table .dots span {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    width: 100%;
+  }
+  
+  .dots:before {
+    content: '';
+    display: inline-block;
+  }
+
+.table-bordered {
+    border: 2px solid #C6E6FF;
+    border-collapse: collapse !important;
+}
+
+.table-bordered > thead {
+    border: 2px solid #C6E6FF;
+}
+
+.table-bordered > thead> tr > th {
+    border: 2px solid #C6E6FF !important;
+    
+}
+
+.table-bordered > tbody > tr > td {
+    border: 2px solid #C6E6FF;
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%; */
+} 
+
+.table > thead > tr {
+    height: 65px;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    font-size: 12pt;
+}
+
+.sections-hover{
+    color: black;
+}
+
+.sections-hover:hover {
+    color: #fd7e14; 
+    text-decoration: underline; 
+   }
+
+.item-text{
+    font-size: 13pt;
+}
+    
+
+
+
+
+
+
+
 
 

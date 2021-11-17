@@ -23,9 +23,9 @@ $result = get_selected_news_post($conn, $_GET["id"]);
             <p class="fs-6 fw-light">Дата публикации: <?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y H:i:s') . ' ' . $result["user_name"] ?></p>
         </div>
         <div class="mt-3">
-            <img src="/includes/news/id_1_problem.jpg" style='width: 200px; height: 154px'>
+            <img src="/includes/news/id_1_problem.jpg" style='width: 200px; height: 200px'>
         </div>
-        <div class="mt-5 col-8">
+        <div class="mt-3 col-8">
             <p class="fs-6 mb-0 fw-normal"><?php echo $result["news_content"] ?></p>
         </div>
         <div class="mt-3">

@@ -19,40 +19,63 @@
         <button class="btn btn-primary" type="button">Фильтр обращений</button>
       </div>
     </div>
-    <div class="request-table">
-      <table class="table table-bordered table-striped table-hover mt-4">
-        <thead>
-          <tr>
-            <th scope="col" class="text-center" width="50">Номер</th>
-            <th scope="col" class="text-center">Дата создания</th>
-            <th scope="col" class="text-center">Приоритет</th>
-            <th scope="col" class="text-center">Наименование услуги</th>
-            <th scope="col" class="text-center">Описание</th>
-            <th scope="col" class="text-center">Этап</th>
-            <th scope="col" class="text-center" width="300">Исполнитель</th>
-            <th scope="col" class="text-center">Автор</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          $result = get_all_requests($conn);
+    <div class="row">
+      <div class="table-responsive p-0">
+        <table class="table table-bordered table-striped table-hover mt-4">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Номер</th>
+              <th scope="col" class="text-center">Дата создания</th>
+              <th scope="col" class="text-center">Приоритет</th>
+              <th scope="col" class="text-center">Наименование услуги</th>
+              <th scope="col" class="text-center">Описание проблемы</th>
+              <th scope="col" class="text-center">Текущий этап</th>
+              <th scope="col" class="text-center">Исполнитель текущего этапа</th>
+              <th scope="col" class="text-center">Действие</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $result = get_all_requests($conn);
 
-          while ($row = mysqli_fetch_array($result)) {
-            echo "
+            while ($row = mysqli_fetch_array($result)) {
+              /*{
+              $badge = "";
+              if ($row["requests_phase_id"] == 1) {
+                $badge = 'badge bg-secondary';
+              }
+              if ($row["requests_phase_id"] == 2 || $row["requests_phase_id"] == 3) {
+                $badge = 'badge bg-warning text-dark';
+              }
+              if ($row["requests_phase_id"] == 4) {
+                $badge = 'badge bg-success';
+              }
+              if ($row["requests_phase_id"] == 6) {
+                $badge = 'badge bg-primary';
+              } 
+              <td class='dots'>
+              <span>
+              {$row["requests_record"]}
+              </span>
+              </td> */
+              echo "
           <tr>
-            <th scope='row'><a href='request-view.php?id={$row["request_id"]}' class='text-decoration-none text-'>{$row["request_id"]}</a></th>
+            <td>2021-000{$row["request_id"]}</th>
             <td>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
-            <td>{$row["priorities_kind"]}</td>
+            <td>
+            {$row["priorities_kind"]}
+            </td>
             <td>{$row["maintenances_name"]}</td>
-            <td>{$row["requests_record"]}</td>
-            <td>{$row["phases_name"]}</td>
+             <td class='dots'><span>{$row["requests_record"]}</span></td> 
+            <td><span class='{$badge}'>{$row["phases_name"]}</span></td>
             <td>{$row["users_name"]}</td>
-            <td>{$row["requests_created_by"]}</td>
+            <td><a class='btn btn-outline-primary btn-sm'href='request-view.php?id={$row["request_id"]}' class='text-decoration-none'>Открыть</a></td>
           </tr>";
-          }
-          ?>
-        </tbody>
-      </table>
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </main>

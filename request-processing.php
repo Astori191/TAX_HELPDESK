@@ -118,9 +118,18 @@ $change_phase = get_phases($conn, $_GET["id"]);
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <div class="col-8">
-                        <a class="btn btn-primary" href="take_exec_request.php?id=<?php echo $_GET["id"] ?>" class="link-primary">Взять в работу</a>
+                    <div class="col-10">
+                        <?php
+                        if ($result["requests_phase_id"] != 1) {
+                            echo "
+                            <a class='btn btn-primary disabled' role='button' aria-disabled='true'>Взять в работу</a>";
+                        } else {
+                            echo "
+                            <a class='btn btn-primary' href='take_exec_request.php?id={$_GET["id"]}' class='link-primary'>Взять в работу</a>";
+                        }
+                        ?>
                         <a class="btn btn-primary" href="requests-admin.php">Вернуться к обращениям</a>
+
                     </div>
                 </div>
             </div>
