@@ -11,17 +11,27 @@
     /*background-color: gray;*/
 }
 
+.excel-logo {
+    width: 60px;
+    height: 60px;
+}
+
 .logo-text {
-    font-family: 'Roboto';
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
 }
 
-.nav-link-my {
+ .nav-link-my {
     color: #CBFBFF !important;
+} 
+
+.nav-link-my-active {
+    color:black;
 }
+
 .nav-item-my {
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
@@ -57,21 +67,21 @@
     height: 70px;
 }
 
-.bg-light{
+/* .bg-light{
     background-color: #0066B3 !important;
-}
+} */
 
-.text-muted{
+.text-footer {
     color: #CBFBFF !important;
-} 
+}  
 
 .txtarea{
     max-height: 120px;
 }
 
-.news_head{
+/* .news_head{
     color:#0066B3 !important;
-}
+} */
 
 .link-primary{
     color:#0066B3 !important;
@@ -101,16 +111,16 @@
 }
 
 .table .dots {
-    font-size: 12pt;
     position: relative;
-    width: 300px;
+    width: 400px;
   }
   
-  .table .dots span {
+.table .dots span {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     position: absolute;
+    height:auto;
     width: 100%;
   }
   
@@ -144,11 +154,13 @@
 .table > thead > tr {
     height: 65px;
     font-family: 'Roboto Condensed', sans-serif;
+    font-size: 12pt;
 }
 
 .table > tbody > tr > td {
     vertical-align: middle;
     font-size: 12pt;
+    font-family: 'Roboto', sans-serif;
 }
 
 .sections-hover{
@@ -158,12 +170,33 @@
 .sections-hover:hover {
     color: #fd7e14; 
     text-decoration: underline; 
-   }
+}
+
+.news-hover{
+    color: #0066B3;
+}
+
+.news-hover:hover {
+    color: #fd7e14; 
+    text-decoration: underline; 
+}
 
 .item-text{
     font-size: 13pt;
 }
-    
+
+.news-view-title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18pt;
+
+}
+
+.news-view-content {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 30pt;
+
+    color: #0066B3;
+}
 
 
 

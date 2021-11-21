@@ -51,9 +51,10 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between '>
-                      <h6 class='news_head'>{$row["title"]}</h6>
-                      
-                      <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
+                      <a class='text-decoration-none' href='news-view.php?id={$row["id"]}'>
+                        <div class='news-hover ps-4'>{$row["title"]}</div>
+                      </a>
+                      <div class='ps-4 pt-2 text-muted'>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
                 </div>";
@@ -80,8 +81,10 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <h6 class='news_head'>{$row["title"]}</h6>
-                      <span>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</span>
+                    <a class='text-decoration-none' href='news-view.php?id={$row["id"]}'>
+                      <div class='news-hover ps-4'>{$row["title"]}</div>
+                      </a>
+                      <div class='ps-4 pt-2 text-muted'>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
                 </div>";
@@ -107,8 +110,10 @@
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
                     <div class='d-flex flex-column justify-content-between'>
-                      <h6 class='news_head'>{$row["title"]}</h6>
-                      <div>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
+                    <a class='text-decoration-none' href='news-view.php?id={$row["id"]}'>
+                      <div class='news-hover ps-4'>{$row["title"]}</div>
+                    </a>
+                      <div class='ps-4 pt-2 text-muted'>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
                 </div>";
@@ -116,7 +121,7 @@
             ?>
           </div>
         </div>
-        <div style="text-align: right">
+        <div>
           <a href="index.php" class="link-primary">Все новости</a>
         </div>
       </div>

@@ -1,35 +1,96 @@
 <?php include './includes/header.php' ?>
 <main class="flex-shrink-0">
   <div class="container">
-    <div class="row mt-2 justify-content-center bottom-line h-font">
-      <p class="fs-3 text-wrap text-center" style="width: 34rem;">Телефонный справочник работников ИФНС России № 30 по г. Москве</p>
+    <div class="d-flex justify-content-between bottom-line">
+      <div class="p-2 bd-highlight">
+
+      </div>
+      <div class="pt-3 bd-highlight">
+        <p class="fs-3 text-center">Телефонный справочник работников <br> ИФНС России № 30 по г. Москве</p>
+      </div>
+      <div class="pt-4 bd-highlight">
+        <img src="assets/img/icons8-microsoft-excel-2019.svg" class="excel-logo me-3" />
+      </div>
     </div>
     <div class="row mt-3 mb-3 justify-content-center">
-      <input class="form-control" style="width:50%" type="text" placeholder="Поиск: по ФИО / номеру телефона / коду СОНО" aria-label="Search">
+      <input class="form-control" type="text" placeholder="Поиск: по ФИО / номеру телефона / коду СОНО" aria-label="Search">
     </div>
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Таб. номер</th>
-            <th scope="col">Должность</th>
-            <th scope="col">ФИО</th>
-            <th scope="col">№ каб.</th>
-            <th scope="col">№ тел. (городской)</th>
-            <th scope="col">№ тел. (IP)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row justify-content-center">
+      <div class="col-9">
+        <table class="table table-sm table-borderless text-center">
+          <tbody>
+            <?php
+            $count = 0;
+            $result = get_departments($conn);
+            while ($row = mysqli_fetch_array($result)) {
+              if ($count == 0) {
+                $count++;
+                echo
+                "
+                <tr>
+                  <td>
+                    <a href='#{$row["departments_id"]}' class='link-primary text-decoration-none'>
+                      {$row["departments_name"]}
+                    </a>  
+                  </td>";
+              } else if ($count == 1) {
+                echo
+                "
+                  <td>
+                    <a href='#{$row["departments_id"]}' class='link-primary text-decoration-none'>
+                      {$row["departments_name"]}  
+                    </a>
+                  </td>
+                </tr>";
+                $count = 0;
+              }
+            }
+            ?>
+        </table>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="table-responsive p-0">
+        <table class="table">
+          <thead>
+            <tr style="background-color: #f8f9fa">
+              <th scope="col" class="text-center">Должность</th>
+              <th scope="col" class="text-center">ФИО</th>
+              <th scope="col" class="text-center">№ каб.</th>
+              <th scope="col" class="text-center">№ тел. (городской)</th>
+              <th scope="col" class="text-center">№ тел. (IP)</th>
+              <th scope="col" class="text-center">Электронная почта</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            $deps = get_departments($conn);
+            while ($row = mysqli_fetch_array($deps)) {
+              echo "
+            <tr>
+                <td colspan='12' class='text-center' style='background-color: #cfe2ff'>
+                <a id='{$row["departments_id"]}'</a>
+                  {$row["departments_name"]}
+                </td>
+              </tr>";
+              $data = show_phonebook($conn, $row["departments_id"]);
+              while ($row2 = mysqli_fetch_array($data)) {
+                echo "
+              <tr>
+                <td>{$row2["users_position_name"]}</td>
+                <td>{$row2["users_name"]}</td>
+                <td>{$row2["users_N_cab"]}</td>
+                <td>{$row2["users_N_Tel"]}</td>
+                <td>{$row2["users_N_Tel_ip"]}</td>
+                <td>{$row2["users_mail_to"]}</td>
+              </tr>";
+              }
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </main>

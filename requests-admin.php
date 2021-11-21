@@ -6,7 +6,7 @@
         <div class="d-flex p-2 align-items-center mt-2">
           <img src="assets/img/Emblem_of_the_Federal_Tax_Service.svg" class="logo me-3" />
           <!-- <div class="logo-text">ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br> ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</div> -->
-          <h4>ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br>ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</h4>
+          <h4 class="main-title">ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br>ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</h4>
         </div>
       </div>
     </div>
@@ -18,17 +18,17 @@
     </div>
     <div class="row">
       <div class="table-responsive p-0">
-        <table class="table table-bordered table-striped table-hover mt-4">
+        <table class="table table-sm table-bordered table-hover mt-4">
           <thead>
             <tr>
               <th scope="col" class="text-center">Номер</th>
               <th scope="col" class="text-center">Дата создания</th>
               <th scope="col" class="text-center">Приоритет</th>
               <th scope="col" class="text-center">Наименование услуги</th>
-              <th scope="col" class="text-center">Описание</th>
-              <th scope="col" class="text-center">Этап</th>
-              <th scope="col" class="text-center">Исполнитель</th>
+              <th scope="col" class="text-center">Описание проблемы</th>
+              <th scope="col" class="text-center">Текущий этап</th>
               <th scope="col" class="text-center">Автор</th>
+              <th scope="col" class="text-center">Действие</th>
             </tr>
           </thead>
           <tbody>
@@ -36,19 +36,25 @@
             $result = get_all_requests($conn);
 
             while ($row = mysqli_fetch_array($result)) {
-              // if ($row["requests_phase_id"] == 1) {
               echo "
               <tr>
-                <th scope='row'><a href='request-processing.php?id={$row["request_id"]}' class='text-decoration-none text-'>{$row["request_id"]}</a></th>
-                <td>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
-                <td>{$row["priorities_kind"]}</td>
-                <td>{$row["maintenances_name"]}</td>
-                <td>{$row["requests_record"]}</td>
-                <td>{$row["phases_name"]}</td>
-                <td>{$row["users_name"]}</td>
+                <td width='96'>2021-000{$row["request_id"]}</td>
+                <td width='160'>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
+                <td width='127'>{$row["priorities_kind"]}</td>
+                <td class='dots'>
+                  <span title='{$row["maintenances_name"]}'>
+                    {$row["maintenances_name"]}
+                  </span>
+                </td>
+                <td class='dots'>
+                <span title='{$row["requests_record"]}'>
+                  {$row["requests_record"]}
+                </span>
+              </td> 
+                <td width='201'>{$row["phases_name"]}</td>
                 <td>{$row["requests_created_by"]}</td>
+                <td style='text-align:center;'><a class='btn btn-outline-primary' href='request-processing.php?id={$row["request_id"]}' class='text-decoration-none ve'>Открыть</a></td>
               </tr>";
-              // }
             }
             ?>
           </tbody>

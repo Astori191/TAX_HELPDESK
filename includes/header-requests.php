@@ -32,19 +32,19 @@ if (!isset($_SESSION['login'])) {
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link nav-link-my" aria-current="page" href="index.php">Главная</a>
+            <a class="nav-link nav-link-my-active" aria-current="page" href="index.php">Главная</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-new.php">Обращения</a>
+            <a class="nav-link active" href="requests-new.php">Обращения</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-admin.php">Кабинет исполнителя</a>
+            <a class="nav-link" href="requests-admin.php">Кабинет исполнителя</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-my" href="phonebook.php">Телефонный справочник</a>
+            <a class="nav-link" href="phonebook.php">Телефонный справочник</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-my" href="helpers.php">База знаний</a>
+            <a class="nav-link" href="helpers.php">База знаний</a>
           </li>
         </ul>
         <?php if (isset($_SESSION['login'])) {

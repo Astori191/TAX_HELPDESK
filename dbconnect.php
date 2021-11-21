@@ -298,11 +298,43 @@ function change_request_stage_on_execution($conn, $pcreated_by, $prequest_id)
     return mysqli_query($conn, $query);
 }
 
+function show_phonebook($conn, $sdepartments_id)
+{
+    $query = "
+    SELECT 
+        users.id            as users_id,
+        users.name          as users_name,
+        users.position_id   as users_position_id,
+        users.N_cab         as users_N_cab,
+        users.N_Tel         as users_N_Tel,
+        users.N_Tel_ip      as users_N_Tel_ip,
+        users.mail_to       as users_mail_to,
+        users.department_id as users_department_id,
+        positions.name      as users_position_name,
+        departments.name    as users_departments_name
+    FROM 
+        users
+    LEFT JOIN positions 
+        ON users.position_id = positions.id
+    LEFT JOIN departments
+        ON users.department_id = departments.id
+    WHERE 
+        users.department_id = {$sdepartments_id} AND users.id != 1 AND users.id != 2
+    ";
+    return mysqli_query($conn, $query);
+}
 
+function get_departments($conn)
+{
+    $query = "
+    SELECt
+        departments.id as departments_id,
+        departments.name as departments_name
+    FROM
+        departments";
 
-
-
-
+    return mysqli_query($conn, $query);
+}
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);

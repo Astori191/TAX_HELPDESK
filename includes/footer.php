@@ -1,6 +1,6 @@
-  <footer class="footer py-3 bg-light">
+  <footer class="footer py-3 bg-primary">
     <div class="container">
-      <span class="text-muted">Релиз 21.11.08.1 &copy Портал технической поддержки ИФНС России № 30 по г. Москве</span>
+      <span class="text-footer">Релиз 21.11.08.1 &copy Портал технической поддержки ИФНС России № 30 по г. Москве</span>
     </div>
   </footer>
 
