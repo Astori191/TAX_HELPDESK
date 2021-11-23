@@ -165,7 +165,8 @@ function get_selected_request($conn, $id)
             maintenances.name       as maintenances_name,
             priorities.kind         as priorities_kind,
             phases.name             as phases_name,
-            users.name              as users_name
+            users1.name             as users1_name,
+            users2.name 			as users2_name
         FROM
             requests
         LEFT JOIN maintenances
@@ -174,10 +175,12 @@ function get_selected_request($conn, $id)
             ON requests.priority_id = priorities.id
         LEFT JOIN phases
             ON requests.phase_id = phases.id
-        LEFT JOIN users
-            ON requests.assignee_id = users.id
-    WHERE 
-        requests.id = {$id}
+        LEFT JOIN users as users1
+            ON requests.assignee_id = users1.id 
+        LEFT JOIN users as users2
+            ON requests.created_by = users2.id
+        WHERE 
+            requests.id = {$id}
         ";
 
     $res = $conn->query($query);
@@ -200,7 +203,8 @@ function get_all_requests($conn)
             maintenances.name       as maintenances_name,
             priorities.kind         as priorities_kind,
             phases.name             as phases_name,
-            users.name              as users_name
+            users1.name             as users1_name,
+            users2.name 			as users2_name
         FROM
             requests
         LEFT JOIN maintenances
@@ -209,10 +213,47 @@ function get_all_requests($conn)
             ON requests.priority_id = priorities.id
         LEFT JOIN phases
             ON requests.phase_id = phases.id
-        LEFT JOIN users
-            ON requests.assignee_id = users.id
+        LEFT JOIN users as users1
+            ON requests.assignee_id = users1.id 
+        LEFT JOIN users as users2
+            ON requests.created_by = users2.id
         ORDER BY requests_created_when DESC
         ";
+    return mysqli_query($conn, $query);
+}
+
+function get_requests_for_user($conn, $cur_user_id)
+{
+    $query = "
+    SELECT
+        requests.id             as request_id,
+        requests.created_when   as requests_created_when,
+        requests.maintenance_id as requests_maintenance_id,
+        requests.priority_id    as requests_priority_id,
+        requests.record         as requests_record,
+        requests.phase_id       as requests_phase_id,
+        requests.assignee_id    as requests_assignee_id,
+        requests.created_by     as requests_created_by,
+        maintenances.name       as maintenances_name,
+        priorities.kind         as priorities_kind,
+        phases.name             as phases_name,
+        users1.name             as users1_name,
+        users2.name 			as users2_name
+    FROM
+        requests
+    LEFT JOIN maintenances
+        ON requests.maintenance_id = maintenances.id
+    LEFT JOIN priorities
+        ON requests.priority_id = priorities.id
+    LEFT JOIN phases
+        ON requests.phase_id = phases.id
+    LEFT JOIN users as users1
+        ON requests.assignee_id = users1.id 
+    LEFT JOIN users as users2
+        ON requests.created_by = users2.id
+    WHERE
+        requests.created_by = '{$cur_user_id}'
+    ";
     return mysqli_query($conn, $query);
 }
 

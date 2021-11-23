@@ -52,7 +52,7 @@
                 </span>
               </td> 
                 <td width='201'>{$row["phases_name"]}</td>
-                <td>{$row["requests_created_by"]}</td>
+                <td>{$row["users2_name"]}</td>
                 <td style='text-align:center;'><a class='btn btn-outline-primary' href='request-processing.php?id={$row["request_id"]}' class='text-decoration-none ve'>Открыть</a></td>
               </tr>";
             }

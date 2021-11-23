@@ -38,7 +38,15 @@ if (!isset($_SESSION['login'])) {
             <a class="nav-link nav-link-my" href="requests-new.php">Обращения</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-my" href="requests-admin.php">Кабинет исполнителя</a>
+            <?php
+            if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 3) {
+              echo "
+              <a class='nav-link nav-link-my' href='requests-admin.php'>Кабинет исполнителя</a>";
+            } else {
+              echo "
+              <a class='nav-link nav-link-my' href='access_restricted.php'>Кабинет исполнителя</a>";
+            }
+            ?>
           </li>
           <li class="nav-item">
             <a class="nav-link nav-link-my" href="phonebook.php">Телефонный справочник</a>

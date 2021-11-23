@@ -36,7 +36,7 @@
           </thead>
           <tbody>
             <?php
-            $result = get_all_requests($conn);
+            $result = get_requests_for_user($conn, $_SESSION["user_id"]);
 
             while ($row = mysqli_fetch_array($result)) {
               /*{
@@ -58,33 +58,29 @@
               {$row["requests_record"]}
               </span>
               </td> */
-
-
-
               echo "
-          <tr>
-            <td width='96'>2021-000{$row["request_id"]}</th>
-            <td width='160'>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
-            <td width='127'>
-            {$row["priorities_kind"]}
-            </td>
-            <td class='dots'>
-              <span title='{$row["maintenances_name"]}'>
-                {$row["maintenances_name"]}
-              </span>
-            </td>
-            <td class='dots'>
-              <span title='{$row["requests_record"]}'>
-                {$row["requests_record"]}
-              </span>
-            </td> 
-            <td width='201'>
-              {$row["phases_name"]}
-            </td>
-            <td>{$row["users_name"]}
-            </td>
-            <td style='text-align:center;'><a class='btn btn-outline-primary' href='request-view.php?id={$row["request_id"]}' class='text-decoration-none ve'>Открыть</a></td>
-          </tr>";
+                <tr>
+                  <td width='96'>2021-000{$row["request_id"]}</th>
+                  <td width='160'>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
+                  <td width='127'>
+                    {$row["priorities_kind"]}
+                  </td>
+                  <td class='dots'>
+                    <span title='{$row["maintenances_name"]}'>
+                      {$row["maintenances_name"]}
+                    </span>
+                  </td>
+                  <td class='dots'>
+                    <span title='{$row["requests_record"]}'>
+                      {$row["requests_record"]}
+                    </span>
+                  </td> 
+                  <td width='201'>
+                    {$row["phases_name"]}
+                  </td>
+                  <td>{$row["users1_name"]}</td>
+                  <td style='text-align:center;'><a class='btn btn-outline-primary' href='request-view.php?id={$row["request_id"]}' class='text-decoration-none ve'>Открыть</a></td>
+                </tr>";
             }
             ?>
           </tbody>

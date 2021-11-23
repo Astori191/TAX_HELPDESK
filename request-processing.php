@@ -65,7 +65,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                     </div>
                     <div class="col-8">
                         <div class="input-group input-group-sm mb-3">
-                            <input class="form-control" type="text" value="<?php echo $result["users_name"] ?>" aria-label="readonly input example" readonly>
+                            <input class="form-control" type="text" value="<?php echo $result["users1_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                     </div>
                     <div class="col-8">
                         <div class="input-group input-group-sm mb-3">
-                            <input class="form-control" type="text" value="<?php echo $result["requests_created_by"] ?>" aria-label="readonly input example" readonly>
+                            <input class="form-control" type="text" value="<?php echo $result["users2_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
                 </div>

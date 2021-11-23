@@ -17,7 +17,7 @@ $messages = get_messages($conn, $_GET["id"]);
         </div>
         <div class="row mt-3">
             <div class="col">
-                <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;">ОБРАЩЕНИЕ <?php echo $result["request_id"] ?></h2>
+                <h2 class="text-uppercase" style="font-family: 'Roboto Condensed', sans-serif;">ОБРАЩЕНИЕ №<?php echo $result["request_id"] ?></h2>
             </div>
         </div>
         <div class="row mt-3">
@@ -25,7 +25,7 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Время создания</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group mb-3">
                     <input class="form-control" type="text" value="<?php echo date_format(date_create($result["requests_created_when"]), 'd.m.Y H:i:s') ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
@@ -35,8 +35,8 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Исполнитель</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-                    <input class="form-control" type="text" value="<?php echo $result["users_name"] ?>" aria-label="readonly input example" readonly>
+                <div class="input-group input-group mb-3">
+                    <input class="form-control" type="text" value="<?php echo $result["users1_name"] ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Этап</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group mb-3">
                     <input class="form-control" type="text" value="<?php echo $result["phases_name"] ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
@@ -55,7 +55,7 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Приоритет</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group mb-3">
                     <input class="form-control" type="text" value="<?php echo $result["priorities_kind"] ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
@@ -66,7 +66,7 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Вид услуги</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
+                <div class="input-group input-group mb-3">
                     <input class="form-control" type="text" value="<?php echo $result["maintenances_name"] ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
@@ -86,8 +86,8 @@ $messages = get_messages($conn, $_GET["id"]);
                 <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Заявитель</h5>
             </div>
             <div class="col-4">
-                <div class="input-group input-group-sm mb-3">
-                    <input class="form-control" type="text" value="<?php echo $result["requests_created_by"] ?>" aria-label="readonly input example" readonly>
+                <div class="input-group input-group mb-3">
+                    <input class="form-control" type="text" value="<?php echo $result["users2_name"] ?>" aria-label="readonly input example" readonly>
                 </div>
             </div>
         </div>

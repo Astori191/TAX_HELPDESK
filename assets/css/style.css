@@ -8,7 +8,11 @@
 .logo {
     width: 100px;
     height: 100px;
-    /*background-color: gray;*/
+}
+
+.err-logo {
+    width: 200px;
+    height: 225px;
 }
 
 .excel-logo {
@@ -169,7 +173,6 @@
 
 .sections-hover:hover {
     color: #fd7e14; 
-    text-decoration: underline; 
 }
 
 .news-hover{
@@ -178,7 +181,6 @@
 
 .news-hover:hover {
     color: #fd7e14; 
-    text-decoration: underline; 
 }
 
 .item-text{

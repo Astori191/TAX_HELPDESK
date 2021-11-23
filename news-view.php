@@ -1,6 +1,31 @@
 <?php include './includes/header.php' ?>
 <?php
 $result = get_selected_news_post($conn, $_GET["id"]);
+$image_name = "";
+if ($result["nt_id"] == 1 || $result["nt_id"] == 3) {
+    $image_name = 'id_1_problem.jpg';
+}
+if ($result["nt_id"] == 2 || $result["nt_id"] == 4) {
+    $image_name = 'id_2_fixed.jpg';
+}
+if ($result["nt_id"] == 3 || $result["nt_id"] == 3) {
+    $image_name = 'id_3_problem.jpg';
+}
+if ($result["nt_id"] == 4 || $result["nt_id"] == 4) {
+    $image_name = 'id_4_fixed.jpg';
+}
+if ($result["nt_id"] == 5) {
+    $image_name = 'id_5_problem.jpg';
+}
+if ($result["nt_id"] == 6) {
+    $image_name = 'id_6_fixed.jpg';
+}
+if ($result["nt_id"] == 7) {
+    $image_name = 'id_7_attention.jpg';
+}
+if ($result["nt_id"] == 8) {
+    $image_name = 'id_8_info.jpg';
+}
 ?>
 <main class="flex-shrink-0">
     <div class="container">
@@ -20,13 +45,14 @@ $result = get_selected_news_post($conn, $_GET["id"]);
                 <div class="news-view-content"><?php echo $result["news_title"] . ' ' .  date_format(date_create($result["news_created_when"]), 'd.m.Y') ?></div>
             </div>
         </div>
-
         <div class="mt-3">
             <p class="fs-6 text-muted">Дата публикации: <?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y H:i:s') . ' ' . $result["user_name"] ?></p>
         </div>
-        <div class="mt-3">
-            <img src="/includes/news/id_1_problem.jpg" style='width: 200px; height: 200px'>
-        </div>
+        <?php echo "
+        <div class='mt-3'>
+            <img style='width: 200px; height: 200px;' src='includes/news/{$image_name}'>
+        </div>";
+        ?>
         <div class="mt-3 col-8">
             <p class="fs-6 mb-0 fw-normal"><?php echo $result["news_content"] ?></p>
         </div>

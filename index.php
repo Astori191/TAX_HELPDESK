@@ -142,12 +142,25 @@
             </div>
             <div class="row">
               <div class="d-flex p-3 align-items-center">
-                <div class="d-flex me-3 justify-content-center right-section">
-                  <a href="requests-admin.php"><span class="icon icon-admin" style="width: 70px; height: 70px;"></span></a>
+                <?php
+                if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 3) {
+                  echo "
+                    <div class='d-flex me-3 justify-content-center right-section'>
+                      <a href='requests-admin.php'><span class='icon icon-admin' style='width: 70px; height: 70px;'></span></a>
+                    </div>
+                    <a href='requests-admin.php' class='text-decoration-none ps-3 sections-hover'>
+                      <div class='item-text'>Кабинет исполнителя</div>
+                    </a>";
+                } else {
+                  echo "
+                  <div class='d-flex me-3 justify-content-center right-section'>
+                  <a href='access_restricted.php'><span class='icon icon-admin' style='width: 70px; height: 70px;'></span></a>
                 </div>
-                <a href="requests-admin.php" class="text-decoration-none ps-3 sections-hover">
-                  <div class="item-text">Кабинет исполнителя</div>
-                </a>
+                  <a href='access_restricted.php' class='text-decoration-none ps-3 sections-hover'>
+                    <div class='item-text'>Кабинет исполнителя</div>
+                  </a>";
+                }
+                ?>
               </div>
             </div>
           </div>

@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="row mt-3 mb-3 justify-content-center">
-      <input class="form-control" type="text" placeholder="Поиск: по ФИО / номеру телефона / коду СОНО" aria-label="Search">
+      <input class="form-control" type="text" placeholder="Поиск: по ФИО / номеру телефона / коду СОНО" aria-label="Search" id="search-text" onkeyup="tableSearch()">
     </div>
     <div class="row justify-content-center">
       <div class="col-9">
@@ -30,7 +30,7 @@
                 <tr>
                   <td>
                     <a href='#{$row["departments_id"]}' class='link-primary text-decoration-none'>
-                      {$row["departments_name"]}
+                      <div class='news-hover'>{$row["departments_name"]}</div> 
                     </a>  
                   </td>";
               } else if ($count == 1) {
@@ -38,7 +38,7 @@
                 "
                   <td>
                     <a href='#{$row["departments_id"]}' class='link-primary text-decoration-none'>
-                      {$row["departments_name"]}  
+                      <div class='news-hover'>{$row["departments_name"]}</div>  
                     </a>
                   </td>
                 </tr>";
@@ -52,7 +52,7 @@
     </div>
     <div class="row">
       <div class="table-responsive p-0">
-        <table class="table">
+        <table class="table" id="info-table">
           <thead>
             <tr style="background-color: #f8f9fa">
               <th scope="col" class="text-center">Должность</th>
@@ -98,3 +98,24 @@
   <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
 </div>
 <?php include './includes/footer.php'; ?>
+<script type="text/javascript">
+  function tableSearch() {
+    var phrase = document.getElementById('search-text');
+    var table = document.getElementById('info-table');
+    var regPhrase = new RegExp(phrase.value, 'i');
+    var flag = false;
+    for (var i = 1; i < table.rows.length; i++) {
+      flag = false;
+      for (var j = table.rows[i].cells.length - 1; j >= 0; j--) {
+        flag = regPhrase.test(table.rows[i].cells[j].innerHTML);
+        if (flag) break;
+      }
+      if (flag) {
+        table.rows[i].style.display = "";
+      } else {
+        table.rows[i].style.display = "none";
+      }
+
+    }
+  }
+</script>
