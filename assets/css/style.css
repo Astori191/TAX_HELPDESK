@@ -59,7 +59,7 @@
 
 
 .navbar-text {
-    color: #CBFBFF !important;
+    color: #ffffff !important;
 } 
 
 .bottom-line {
@@ -109,10 +109,10 @@
 }
 
 
-.border{
+/* .border{
     border: 2px solid #DCDCDC !important;
     border-radius: 10px !important;;
-}
+}   */
 
 .table .dots {
     position: relative;
@@ -134,21 +134,21 @@
   }
 
 .table-bordered {
-    border: 2px solid #C6E6FF;
+    border: 2px solid #E8F0F7;
     border-collapse: collapse !important;
 }
 
 .table-bordered > thead {
-    border: 2px solid #C6E6FF;
+    border: 2px solid #E8F0F7;
 }
 
 .table-bordered > thead> tr > th {
-    border: 2px solid #C6E6FF !important;
+    border: 2px solid #E8F0F7 !important;
     
 }
 
 .table-bordered > tbody > tr > td {
-    border: 2px solid #C6E6FF;
+    border: 2px solid #E8F0F7;
     /* white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -163,7 +163,7 @@
 
 .table > tbody > tr > td {
     vertical-align: middle;
-    font-size: 12pt;
+    font-size: 11pt;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -200,10 +200,51 @@
     color: #0066B3;
 }
 
+.page-link {
+    color: black;
+}
 
+ /* Remove default bullets */
+ ul, #myUL {
+    list-style-type: none;
+  }
+  
+  /* Remove margins and padding from the parent ul */
+  #myUL {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Style the caret/arrow */
+  .caret {
+    cursor: pointer;
+    user-select: none; /* Prevent text selection */
+  }
+  
+  /* Create the caret/arrow with a unicode, and style it */
+  .caret::before {
+    content: "\25B6";
+    color: black;
+    display: inline-block;
+    margin-right: 6px;
+  }
+  
+  /* Rotate the caret/arrow icon when clicked on (using JavaScript) */
+  .caret-down::before {
+    transform: rotate(90deg);
+  }
+  
+  /* Hide the nested list */
+  .nested {
+    display: none;
+  }
+  
+  /* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+  .active {
+    display: block;
+  } 
 
-
-
+  input:checked + .target-show { display: none; }
 
 
 

@@ -1,16 +1,12 @@
 <?php
-
 function db_open()
 {
     $servername = "localhost";
     $username = "Master";
     $password = "wyyCdpXf7l8lS2fy";
     $database = "taxhelpdesk";
-
-    // Create connection
     $db_connection = new mysqli($servername, $username, $password, $database);
 
-    // Check connection
     if ($db_connection->connect_error) {
         die("Connection failed: " . $db_connection->connect_error);
     }
@@ -41,6 +37,28 @@ function get_user($conn, $login, $password)
     return $res->fetch_assoc();
 }
 
+function get_all_news($conn)
+{
+    $query = "
+    SELECT
+        news.id                 as id,
+        news.news_type_id       as nt_id,
+        news.title              as title,
+        news.content            as content,
+        news.created_by         as created_by,
+        news.created_when       as created_when,
+        news_types.news_head_id as news_types_head_id
+    FROM 
+        news    
+    LEFT JOIN news_types 
+        ON news.news_type_id = news_types.id
+    LEFT JOIN news_heads
+        ON news_types.news_head_id = news_heads.id
+    ORDER BY created_when DESC
+    LIMIT 10";
+    return mysqli_query($conn, $query);
+}
+
 function get_news($conn, $news_type)
 {
     $cond = "";
@@ -53,7 +71,6 @@ function get_news($conn, $news_type)
     if ($news_type == 3) {
         $cond = "news.news_type_id IN ('7', '8')";
     }
-
     $query = "
     SELECT
         news.id                 as id,
@@ -72,8 +89,7 @@ function get_news($conn, $news_type)
     WHERE
         {$cond} AND news_types.news_head_id = {$news_type}
         ORDER BY created_when DESC
-        LIMIT 7";
-
+        LIMIT 5";
     return mysqli_query($conn, $query);
 }
 
@@ -145,6 +161,17 @@ function get_priorities($conn)
             priorities.kind
         FROM
             priorities
+    ";
+    return mysqli_query($conn, $query);
+}
+
+function get_roles($conn)
+{
+    $query = "
+        SELECT 
+            * 
+        FROM 
+            roles
     ";
     return mysqli_query($conn, $query);
 }
@@ -271,7 +298,8 @@ function get_messages($conn, $id)
         maintenances.name                as maintenances_name,
         phases.name                      as phases_name,
         users.name                       as users_name,
-        users.login                      as users_login
+        users.login                      as users_login,
+        requests.phase_id                as rh_phase_id
     FROM 
         requests_history
     LEFT JOIN requests 
@@ -361,6 +389,7 @@ function show_phonebook($conn, $sdepartments_id)
         ON users.department_id = departments.id
     WHERE 
         users.department_id = {$sdepartments_id} AND users.id != 1 AND users.id != 2
+        ORDER BY users_position_id ASC
     ";
     return mysqli_query($conn, $query);
 }
@@ -374,6 +403,27 @@ function get_departments($conn)
     FROM
         departments";
 
+    return mysqli_query($conn, $query);
+}
+
+function get_positions($conn)
+{
+    $query = "
+    SELECT
+        positions.id as positions_id,
+        positions.name as positions_name
+    FROM
+        positions";
+    return mysqli_query($conn, $query);
+}
+
+function get_news_types($conn)
+{
+    $query = "
+    SELECT 
+        * 
+    FROM 
+        news_types";
     return mysqli_query($conn, $query);
 }
 

@@ -1,3 +1,4 @@
+<?php header("refresh: 7; url=index.php"); ?>
 <?php include './includes/header.php' ?>
 <main class="flex-shrink-0">
   <div class="container">

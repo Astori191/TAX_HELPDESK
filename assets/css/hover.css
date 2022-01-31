@@ -38,3 +38,12 @@
 .icon-phonebook:focus {
   background-image: url(colored/contact-book.svg);
 }
+
+.icon-news {
+  background-image: url(blue/newspaper.png);
+}
+
+.icon-news:hover,
+.icon-news:focus {
+background-image: url(colored/newspaper.png);
+}

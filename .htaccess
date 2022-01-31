@@ -7,4 +7,7 @@ AddCharset UTF-8 .html
    Header set Cache-Control: "no-cache, no-store"
    Header unset ETag
 </FilesMatch>
+<Files dbconnect.php>
+    Deny from all 
+</Files>
 Header set X-Content-Type-Options nosniff
