@@ -13,8 +13,8 @@
             <div class="col-7">
                 <div class="news-view-title text-uppercase">Все новости</div>
                 <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox">
-                    <label class="form-check-label" for="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1">
                         Отображать содержимое
                     </label>
                 </div>
@@ -57,7 +57,9 @@
                       <a class='text-decoration-none' href='news-view.php?id={$row["id"]}'>
                         <div class='news-hover ps-4'>{$row["title"]}</div>
                       </a>
-                      <div class='mt-2 ps-4'>{$row["content"]}</div>
+                      <div class='mt-2 ps-4' id='ShowHideMe' style='display:none'>
+                        <p>{$row["content"]}</p>
+                      </div>
                       <div class='ps-4 pt-2 text-muted'>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -74,3 +76,12 @@
     <h6></h6>
 </div>
 <?php include './includes/footer.php'; ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+<script>
+$(function() {
+    $('#gridCheck1').change(function() {
+        $('#ShowHideMe').toggle($(this).is(':checked'));
+    });
+});
+</script>

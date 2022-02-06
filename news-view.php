@@ -41,11 +41,11 @@ if ($result["nt_id"] == 8) {
             <div class="news-view-title text-uppercase"><?php echo $result["news_heads_name"] ?></div>
         </div>
         <div class="row" style="line-height: normal;">
-            <div class="col-8">
-                <div class="news-view-content"><?php echo $result["news_title"] . ' ' .  date_format(date_create($result["news_created_when"]), 'd.m.Y') ?></div>
+            <div class="col-10">
+                <div class="news-view-content"><?php echo $result["news_title"] ?></div>
             </div>
         </div>
-        <div class="mt-3">
+        <div class="mt-2">
             <p class="fs-6 text-muted">Дата публикации: <?php echo date_format(date_create($result["news_created_when"]), 'd.m.Y H:i:s') . ' ' . $result["user_name"] ?></p>
         </div>
         <?php echo "<div class='mt-3'>
@@ -56,7 +56,7 @@ if ($result["nt_id"] == 8) {
         </div>
         <div class="mt-3">
             <a href="index.php" class="link-primary text-decoration-none">
-                <div class="news-hover">Вернуться на главную</div>
+                <span class="news-hover">Вернуться на главную</span>
             </a>
         </div>
     </div>

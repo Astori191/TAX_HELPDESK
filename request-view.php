@@ -112,7 +112,9 @@ $messages = get_messages($conn, $_GET["id"]);
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <?php
+                $last_phase = -1;
                 while ($row = mysqli_fetch_array($messages)) {
+                    $last_phase = $row["rh_phase_id"];
                     if ($row["rh_message_type"] == 1) {
                         echo "
                 <div class='modal-body'>
@@ -128,9 +130,8 @@ $messages = get_messages($conn, $_GET["id"]);
                                 <div class='mb-2'>
                                     <p class='text-start text-success fw-bold'>{$row["users_name"]} ({$row["users_login"]}) " . date_format(date_create($row["rh_mcreated_when"]), 'd.m.Y H:i:s') . "</p>
                                     <p class='text-start mb-1'>Услуга: {$row["maintenances_name"]}</p>
-                                    <p class='text-start'>{$row["rh_message"]} <button type='button' class='btn btn-sm btn-outline-success'>Ответить</button></p>
+                                    <p class='text-start'>{$row["rh_message"]}</p>
                                 </div>
-                                
                             </div>";
                     } else {
                         echo "
@@ -143,6 +144,11 @@ $messages = get_messages($conn, $_GET["id"]);
                                 </div>
                             </div>";
                     }
+                }
+                if ($last_phase == 5) {
+                    echo "<div class='modal-body'>
+                    <p class='text-start'><button type='button' class='btn btn-outline-success'>Ответить</button></p>
+                    </div>";
                 }
                 ?>
                 <div class="modal-footer">

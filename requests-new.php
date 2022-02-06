@@ -1,4 +1,12 @@
 <?php include './includes/header-requests.php' ?>
+<?php if (isset($_GET['pageno'])) {
+  $pageno = $_GET['pageno'];
+} else {
+  $pageno = 1;
+}
+$no_of_records_per_page = 10;
+$offset = ($pageno - 1) * $no_of_records_per_page;
+?>
 <main class="flex-shrink-0">
   <div class="container-fluid">
     <div class="row bottom-line pb-3">
@@ -18,30 +26,29 @@
         <button class="btn btn-primary" type="button" onClick="window.location.reload( true );">Обновить</button>
       </div>
     </div>
-    <form method="post" action="/auth.php">
+    <form method="get" action="/requests-new.php">
       <div class="row mt-3">
         <div class="col-6">
           <div class="btn-group btn-group-sm" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil1" id="btncheck1" <?php echo $_GET["fil1"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck1">Завершено</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil2" id="btncheck2" <?php echo $_GET["fil2"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck2">Закрытие</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil3" id="btncheck3" <?php echo $_GET["fil3"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck3">Уточнение</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck4" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil4" id="btncheck4" <?php echo $_GET["fil4"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck4">Внешняя линия</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck5" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil5" id="btncheck5" <?php echo $_GET["fil5"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck5">Передача данных</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck6" autocomplete="off">
+            <input type="checkbox" class="btn-check" name="fil6" id="btncheck6" <?php echo $_GET["fil6"] ? "checked" : "" ?> onChange="this.form.submit()">
             <label class="btn btn-outline-secondary" for="btncheck6">Отложенное выполнение</label>
 
-            <input type="checkbox" class="btn-check" id="btncheck7" autocomplete="off">
-            <label class="btn btn-outline-secondary" for="btncheck7">Сбросить фильтр</label>
+            <a class="btn btn-outline-secondary" href="/requests-new.php">Сбросить фильтр</a>
           </div>
         </div>
       </div>
@@ -63,29 +70,8 @@
           </thead>
           <tbody>
             <?php
-            $result = get_requests_for_user($conn, $_SESSION["user_id"]);
-
+            $result = get_requests_for_user($conn, $_SESSION["user_id"], $_GET["fil1"], $_GET["fil2"], $_GET["fil3"], $_GET["fil4"], $_GET["fil5"], $_GET["fil6"]);
             while ($row = mysqli_fetch_array($result)) {
-              /*{
-              $badge = "";
-              if ($row["requests_phase_id"] == 1) {
-                $badge = 'badge bg-secondary';
-              }
-              if ($row["requests_phase_id"] == 2 || $row["requests_phase_id"] == 3) {
-                $badge = 'badge bg-warning text-dark';
-              }
-              if ($row["requests_phase_id"] == 4) {
-                $badge = 'badge bg-success';
-              }
-              if ($row["requests_phase_id"] == 6) {
-                $badge = 'badge bg-primary';
-              } 
-              <td class='dots'>
-              <span>
-              {$row["requests_record"]}
-              </span>
-              </td> */
-
               echo "
                 <tr>
                   <td width='96'>2021-000{$row["request_id"]}</th>
@@ -110,23 +96,24 @@
                   <td style='text-align:center;'><a class='btn btn-outline-primary' href='request-view.php?id={$row["request_id"]}' class='text-decoration-none ve'>Открыть</a></td>
                 </tr>";
             }
-
             ?>
           </tbody>
         </table>
       </div>
     </div>
-    <div class="row">
-      <nav aria-label="Page navigation example" class="ps-0">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#">Предыдущая</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
-        </ul>
-      </nav>
-    </div>
+    <form method="get" action="/requests-new.php">
+      <div class="row">
+        <nav aria-label="Page navigation example" class="ps-0">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="?pageno=1">Предыдущая</a></li>
+            <li class="page-item"><a class="page-link" href="?pageno=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
+          </ul>
+        </nav>
+      </div>
+    </form>
   </div>
 </main>
 <!-- Modal -->
@@ -210,11 +197,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 <div class="d-flex mt-auto p-2 justify-content-center">
   <h6></h6>
 </div>

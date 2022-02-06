@@ -5,7 +5,6 @@ if (!isset($_SESSION['login'])) {
   header('Location: /signin.php');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en" class="h-100">
 
@@ -61,7 +60,6 @@ if (!isset($_SESSION['login'])) {
             <a href='logout.php' class='logout-link'>Выйти</a>
           </span>";
         }
-
         ?>
       </div>
     </div>

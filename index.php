@@ -10,16 +10,23 @@
               <h4 class="main-title">ПОРТАЛ ТЕХНИЧЕСКОЙ ПОДДЕРЖКИ <br>ИФНС РОССИИ № 30 ПО Г. МОСКВЕ</h4>
             </div>
           </div>
-          <div class="col-3 mt-4">
-            <form>
-              <select class="form-select" name="java-navigator" onchange="top.location.href=this.options[this.selectedIndex].value;">
-                <option selected value="index.php">Административные функции</option>
-                <option value="user-creation.php">Добавить нового пользователя</option>
-                <option value="user-creation.php">Изменить данные пользователя</option>
-                <option value="news-creation.php">Опубликовать новость</option>
-              </select>
-            </form>
-          </div>
+
+          <?php 
+            if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 3) {
+              echo "
+              <div class='col-3 mt-5'>
+                <form>
+                  <select class='form-select' name='java-navigator' onchange='top.location.href=this.options[this.selectedIndex].value;'>
+                    <option selected value='index.php'>Административные функции</option>
+                    <option value='user-creation.php'>Добавить нового пользователя</option>
+                    <option value='change_user_info.php'>Изменить данные пользователя</option>
+                    <option value='news-creation.php'>Опубликовать новость</option>
+                  </select>
+                </form>
+            </div>
+            ";
+            }
+          ?>
         </div>
       </div>
     </div>

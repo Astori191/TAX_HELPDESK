@@ -47,7 +47,6 @@
 </body>
 
 </html>
-
 <script>
   setTimeout(function() {
     document.getElementById('message').style.display = 'none';

@@ -30,6 +30,6 @@
   </div>
 </main>
 <div class="d-flex mt-auto p-2 justify-content-center">
-  <h6>Актуальные версии: КПЭ АИС "Налог-3" - 21.22.23.24, КОЭ АИС "Налог-3" - 21.22.23.24</h6>
+  <h6></h6>
 </div>
 <?php include './includes/footer.php'; ?>

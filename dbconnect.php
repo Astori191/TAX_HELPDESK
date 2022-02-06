@@ -176,6 +176,37 @@ function get_roles($conn)
     return mysqli_query($conn, $query);
 }
 
+function get_selected_user($conn, $id)
+{
+    $query = "
+    SELECT
+        users.id            as users_id, 
+        users.name          as users_name, 
+        users.role          as users_role, 
+        users.login         as users_login, 
+        users.password      as users_password, 
+        users.position_id   as users_position_id, 
+        users.N_cab         as users_N_cab, 
+        users.N_Tel         as users_N_Tel, 
+        users.N_Tel_ip      as users_N_Tel_ip, 
+        users.mail_to       as users_mail_to, 
+        users.department_id as users_department_id,
+        positions.name      as users_position_name,
+        departments.name    as users_departments_name,
+        roles.ui_name       as roles_ui_name
+    FROM 
+        users 
+    LEFT JOIN roles 
+        ON users.role = roles.id
+    LEFT JOIN positions
+        ON users.position_id = positions.id
+    LEFT JOIN departments
+        ON users.department_id = departments.id
+    WHERE users.id = {$id}
+    ";
+    $res = $conn->query($query);
+    return $res->fetch_assoc();
+}
 
 function get_selected_request($conn, $id)
 {
@@ -214,7 +245,6 @@ function get_selected_request($conn, $id)
     return $res->fetch_assoc();
 }
 
-
 function get_all_requests($conn)
 {
     $query = "
@@ -249,8 +279,35 @@ function get_all_requests($conn)
     return mysqli_query($conn, $query);
 }
 
-function get_requests_for_user($conn, $cur_user_id)
+function get_requests_for_user($conn, $cur_user_id, $fil1, $fil2, $fil3, $fil4, $fil5, $fil6)
 {
+    $filter = "";
+
+    if (!$fil1 && !$fil2 && !$fil3 && !$fil4 && !$fil5 && !$fil6) {
+        $filter = "1 = 1";
+    } else {
+        $filter = $filter . "(";
+        if ($fil1) {
+            $filter = $filter . "requests.phase_id = 4 OR ";
+        }
+        if ($fil2) {
+            $filter = $filter . "requests.phase_id = 3 OR ";
+        }
+        if ($fil3) {
+            $filter = $filter . "requests.phase_id = 5 OR ";
+        }
+        if ($fil4) {
+            $filter = $filter . "requests.phase_id = 6 OR ";
+        }
+        if ($fil5) {
+            $filter = $filter . "requests.phase_id = 1 OR ";
+        }
+        if ($fil6) {
+            $filter = $filter . "requests.phase_id = 7 OR ";
+        }
+        $filter = $filter . "1 != 1)";
+    }
+
     $query = "
     SELECT
         requests.id             as request_id,
@@ -279,8 +336,9 @@ function get_requests_for_user($conn, $cur_user_id)
     LEFT JOIN users as users2
         ON requests.created_by = users2.id
     WHERE
-        requests.created_by = '{$cur_user_id}'
+        requests.created_by = '{$cur_user_id}' AND {$filter}
     ";
+
     return mysqli_query($conn, $query);
 }
 
@@ -426,6 +484,7 @@ function get_news_types($conn)
         news_types";
     return mysqli_query($conn, $query);
 }
+
 
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
