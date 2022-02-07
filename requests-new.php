@@ -118,15 +118,15 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalToggleLabel">СОЗДАНИЕ ОБРАЩЕНИЯ</h5>
+        <h5 class="modal-title main-title" id="exampleModalToggleLabel">СОЗДАНИЕ ОБРАЩЕНИЯ</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="add_request.php">
+        <form method="post" action="add_request.php" onsubmit="return confirm('Вы уверены, что хотите создать обращение?');">
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Категория</label>
             <select class="form-select" name="mn_id" aria-label="Simple name" required>
-              <option selected>Выберите из списка</option>
+              <option>Выберите из списка</option>
               <?php
               $category_res = get_maintenance_categories($conn);
               while ($row = mysqli_fetch_array($category_res)) {
@@ -143,7 +143,7 @@
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Приоритет</label>
             <select class="form-select" name="pr_id" aria-label="Default select example" required>
-              <option selected>Выберите из списка</option>
+              <option>Выберите из списка</option>
               <?php
               $priorities = get_priorities($conn);
               while ($row = mysqli_fetch_array($priorities)) {

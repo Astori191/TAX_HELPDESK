@@ -13,7 +13,9 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     $query = mysqli_query($conn, "INSERT INTO `requests` (`id`, `created_when`, `maintenance_id`, `priority_id`, `record`, `phase_id`, 
     `assignee_id`, `created_by`) VALUES (NULL, '$pcreated_when', '$pmaintenance_id', '$ppriority_id', '$precord', '$pphase_id', '$passignee_id', 
     '$pcreated_by')");
-    header('Location: /requests-new.php');
+    header('Location: /msg-1.php');
+} else {
+    header('Location: /index.php');
 }
 ?>
 <?php db_close($conn); ?>

@@ -16,7 +16,7 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     $query = mysqli_query($conn, "INSERT INTO `users` (`id`, `name`, `role`, `login`, `password`, `position_id`, 
     `N_cab`, `N_Tel`, `N_Tel_ip`, `mail_to`, `department_id`) VALUES (NULL, '$psfullname', '$psrole', '$pslogin', '$pspass', '$pspositon', 
     '$psncab', '$pstelnumb1', '$pstelnumb2', '$psmail', '$psdep')");
-    header('Location: /user-creation.php');
+    header('Location: /msg-2.php');
 }
 ?>
 

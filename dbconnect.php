@@ -38,6 +38,31 @@ function get_user($conn, $login)
     return $res->fetch_assoc();
 }
 
+function one_user($conn, $id)
+{
+    $query = "
+    SELECT 
+        users.id            as users_id, 
+        users.name          as users_name, 
+        users.role          as users_role, 
+        users.login         as users_login, 
+        users.password      as users_password,
+        users.mail_to       as users_mail_to,
+        users.department_id as users_department_id, 
+        users.position_id   as users_position_id, 
+        users.N_cab         as users_N_cab, 
+        users.N_Tel         as users_N_Tel, 
+        users.N_Tel_ip      as users_N_Tel_ip, 
+        users.mail_to       as users_mail_to, 
+        users.department_id as users_department_id
+    FROM 
+        users 
+    WHERE 
+        users.id ='" . $id . "'";
+    $res = $conn->query($query);
+    return $res->fetch_assoc();
+}
+
 function get_all_news($conn)
 {
     $query = "

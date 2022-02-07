@@ -1,0 +1,62 @@
+* {box-sizing: border-box;
+}
+/* Всплывающее окно 
+* при загрузке сайта            
+*/
+/* базовый контейнер, фон затемнения*/
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 999;
+    -webkit-animation: fade .6s;
+    -moz-animation: fade .6s;
+    animation: fade .6s;
+    overflow: auto;
+}
+/* модальный блок */
+.popup {
+    top: 25%;
+    left: 0;
+    right: 0;       
+    font-size: 14px;
+    margin: auto;
+    width: 100%;
+    width: 731px;
+    height: 400px;
+    
+    position: absolute;
+    padding: 15px 20px;
+    border: 1px solid #383838;
+    background: #fefefe;
+    z-index: 1000;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    font: 14px/18px 'Tahoma', Arial, sans-serif;
+    -webkit-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -moz-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -ms-box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    box-shadow: 0 15px 20px rgba(0,0,0,.22),0 19px 60px rgba(0,0,0,.3);
+    -webkit-animation: fade .6s;
+    -moz-animation: fade .6s;
+    animation: fade .6s;
+}
+/* анимация при появлении блоков с содержанием */
+@-moz-keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1 }
+}
+@-webkit-keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1 } 
+}
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1 }
+}

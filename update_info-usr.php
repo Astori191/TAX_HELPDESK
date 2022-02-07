@@ -2,12 +2,15 @@
 <?php include './dbconnect.php' ?>
 <?php $conn = db_open(); ?>
 <?php
-if (isset($_SESSION['login']) && !empty($_POST)) {
+$result = one_user($conn, $_POST['id']);
+
+if ($diff = array_diff_assoc($_POST, $result)) {
+    header("Location: /msg-4.php");
+} else if (isset($_SESSION['login']) && !empty($_POST)) {
     $ps_id = $_POST['id'];
     $psfullname = $_POST['sfullname'];
     $psrole = $_POST['srole'];
     $pslogin = $_POST['slogin'];
-    $pspass = $_POST['spass'];
     $pspositon = $_POST['spositon'];
     $psncab = $_POST['sncab'];
     $pstelnumb1 = $_POST['stelnumb1'];
@@ -18,13 +21,13 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     UPDATE 
         users 
     SET 
-        name = ?, role = ?, login = ?, password = ?, position_id = ?, N_cab = ?, N_Tel = ?, N_Tel_ip = ?, mail_to = ?, department_id = ?
+        name = ?, role = ?, login = ?, position_id = ?, N_cab = ?, N_Tel = ?, N_Tel_ip = ?, mail_to = ?, department_id = ?
     WHERE
         users.id = ?");
-    $query->bind_param("sississssii", $psfullname, $psrole, $pslogin, $pspass, $pspositon, $psncab, $pstelnumb1, $pstelnumb2, $psmail, $psdep, $ps_id);
+    $query->bind_param("sisissssii", $psfullname, $psrole, $pslogin, $pspositon, $psncab, $pstelnumb1, $pstelnumb2, $psmail, $psdep, $ps_id);
     $query->execute();
     $query->close();
-    header("Location: /user-update.php?id={$ps_id}");
+    header("Location: /msg-3.php");
 }
 ?>
 <?php db_close($conn); ?>
