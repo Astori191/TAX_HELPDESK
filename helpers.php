@@ -32,19 +32,19 @@
                   <div class="row mt-2 mb-2">
                     <li><span class="caret fw-normal">АИС "Налог-3" КОЭ (актуальная версия 21.12.8.1). Перечень изменений.</span>
                       <ul class="nested mt-1">
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\Документация АИС Налог-3 (контур опытной эксплуатации)Перечень_изменений_АБД.docx">
                           <li>Перечень_изменений_АБД</li>
                         </a>
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\Документация АИС Налог-3 (контур опытной эксплуатации)Перечень_изменений_АИН.docx">
                           <li>Перечень_изменений_АИН</li>
                         </a>
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\Документация АИС Налог-3 (контур опытной эксплуатации)Перечень_изменений_АСК_НДС_2.docx">
                           <li>Перечень_изменений_АСК_НДС_2</li>
                         </a>
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\Документация АИС Налог-3 (контур опытной эксплуатации)Перечень_изменений_БЛС.docx">
                           <li>Перечень_изменений_БЛС</li>
                         </a>
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\Документация АИС Налог-3 (контур опытной эксплуатации)Перечень_изменений_ВИО.docx">
                           <li>Перечень_изменений_ВИО</li>
                         </a>
                       </ul>
@@ -58,7 +58,7 @@
                   <div class="row mt-2 mb-2">
                     <li><span class="caret fw-normal">План установки версии АИС "Налог-3" на КОЭ</span>
                       <ul class="nested mt-1">
-                        <a class="news-hover text-decoration-none" href="#">
+                        <a class="news-hover text-decoration-none" href="#" download="D:\OpenServer\domains\TAX_HELPDESK\includes\docs\План проведения технологических работ на контуре опытной эксплуатацииПлан проведения технологических работ на контуре опытной эксплуатации.docx">
                           <li>План проведения технологических работ на контуре опытной эксплуатации</li>
                         </a>
                       </ul>

@@ -1,12 +1,5 @@
 <?php include './includes/header-requests.php' ?>
-<?php if (isset($_GET['pageno'])) {
-  $pageno = $_GET['pageno'];
-} else {
-  $pageno = 1;
-}
-$no_of_records_per_page = 10;
-$offset = ($pageno - 1) * $no_of_records_per_page;
-?>
+
 <main class="flex-shrink-0">
   <div class="container-fluid">
     <div class="row bottom-line pb-3">
@@ -70,7 +63,8 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
           </thead>
           <tbody>
             <?php
-            $result = get_requests_for_user($conn, $_SESSION["user_id"], $_GET["fil1"], $_GET["fil2"], $_GET["fil3"], $_GET["fil4"], $_GET["fil5"], $_GET["fil6"]);
+            $per_page = 8;
+            list($result, $count) = get_requests_for_user($conn, $_GET["page"] ?? 0, $per_page, $_SESSION["user_id"], $_GET["fil1"], $_GET["fil2"], $_GET["fil3"], $_GET["fil4"], $_GET["fil5"], $_GET["fil6"]);
             while ($row = mysqli_fetch_array($result)) {
               echo "
                 <tr>
@@ -101,19 +95,22 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
         </table>
       </div>
     </div>
-    <form method="get" action="/requests-new.php">
-      <div class="row">
-        <nav aria-label="Page navigation example" class="ps-0">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="?pageno=1">Предыдущая</a></li>
-            <li class="page-item"><a class="page-link" href="?pageno=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Следующая</a></li>
-          </ul>
-        </nav>
-      </div>
-    </form>
+    <div class="row">
+      <nav aria-label="Page navigation example" class="ps-0">
+        <ul class="pagination">
+          <?php
+          $page_count = ceil($count / $per_page);
+          for ($i = 0; $i < $page_count; $i++) {
+            if ($i == $_GET["page"]) {
+              echo "<li class='page-item active'><a class='page-link' href='?page={$i}'>" . ($i + 1) . "</a></li>";
+            } else {
+              echo "<li class='page-item'><a class='page-link' href='?page={$i}'>" . ($i + 1) . "</a></li>";
+            }
+          }
+          ?>
+        </ul>
+      </nav>
+    </div>
   </div>
 </main>
 <!-- Modal -->
@@ -128,7 +125,7 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
         <form method="post" action="add_request.php">
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Категория</label>
-            <select class="form-select" name="mn_id" aria-label="Simple name">
+            <select class="form-select" name="mn_id" aria-label="Simple name" required>
               <option selected>Выберите из списка</option>
               <?php
               $category_res = get_maintenance_categories($conn);
@@ -145,7 +142,7 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
           </div>
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Приоритет</label>
-            <select class="form-select" name="pr_id" aria-label="Default select example">
+            <select class="form-select" name="pr_id" aria-label="Default select example" required>
               <option selected>Выберите из списка</option>
               <?php
               $priorities = get_priorities($conn);
@@ -157,7 +154,7 @@ $offset = ($pageno - 1) * $no_of_records_per_page;
           </div>
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Описание проблемы</label>
-            <textarea class="form-control txtarea" name="rec" id="exampleFormControlTextarea1" rows="4"><?= $precord ?></textarea>
+            <textarea class="form-control txtarea" name="rec" id="exampleFormControlTextarea1" rows="4" required><?= $precord ?></textarea>
           </div>
           <div class="form-group mb-3">
             <?php if (isset($_SESSION['login'])) {

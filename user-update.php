@@ -16,6 +16,7 @@ $result = get_selected_user($conn, $_GET["id"]);
         <form method="post" action="/update_info-usr.php">
             <div class="row">
                 <div class="col-5">
+                    <input type="text" value="<?php echo $result["users_id"] ?>" name="id" style="display: none;">
                     <div class="mt-3 fw-bold">
                         <span>ФИО пользователя</span>
                     </div>
@@ -26,12 +27,15 @@ $result = get_selected_user($conn, $_GET["id"]);
                         <span>Роль</span>
                     </div>
                     <select class="form-select mt-2" aria-label="Default select example" name="srole">
-                        <option selected>Выберите из списка</option>
+                        <option>Выберите из списка</option>
                         <?php
                         $sysroles = get_roles($conn);
                         while ($row = mysqli_fetch_array($sysroles)) {
-                            echo "<option value='{$row["id"]}'>{$row["ui_name"]}</option>
-                        ";
+                            if ($row["id"] == $result["role_id"]) {
+                                echo "<option selected value='{$row["id"]}'>{$row["ui_name"]}</option>";
+                            } else {
+                                echo "<option value='{$row["id"]}'>{$row["ui_name"]}</option>";
+                            }
                         }
                         ?>
                     </select>
@@ -58,26 +62,32 @@ $result = get_selected_user($conn, $_GET["id"]);
                     <div class="mt-3 fw-bold">
                         <span>Отдел</span>
                     </div>
-                    <select class="form-select mt-2" aria-label="Default select example" name="spositon">
-                        <option selected>Выберите из списка</option>
+                    <select class="form-select mt-2" aria-label="Default select example" name="sdep">
+                        <option>Выберите из списка</option>
                         <?php
                         $alldeps = get_departments($conn);
                         while ($row = mysqli_fetch_array($alldeps)) {
-                            echo "<option value='{$row["departments_id"]}'>{$row["departments_name"]}</option>
-                        ";
+                            if ($row["departments_id"] == $result["users_department_id"]) {
+                                echo "<option selected value='{$row["departments_id"]}'>{$row["departments_name"]}</option>";
+                            } else {
+                                echo "<option value='{$row["departments_id"]}'>{$row["departments_name"]}</option>";
+                            }
                         }
                         ?>
                     </select>
                     <div class="mt-3 fw-bold">
                         <span>Должность</span>
                     </div>
-                    <select class="form-select mt-2" aria-label="Default select example" name="sdep">
+                    <select class="form-select mt-2" aria-label="Default select example" name="spositon">
                         <option selected>Выберите из списка</option>
                         <?php
                         $alldeps = get_positions($conn);
                         while ($row = mysqli_fetch_array($alldeps)) {
-                            echo "<option value='{$row["positions_id"]}'>{$row["positions_name"]}</option>
-                        ";
+                            if ($row["positions_id"] == $result["users_position_id"]) {
+                                echo "<option selected value='{$row["positions_id"]}'>{$row["positions_name"]}</option>";
+                            } else {
+                                echo "<option value='{$row["positions_id"]}'>{$row["positions_name"]}</option>";
+                            }
                         }
                         ?>
                     </select>

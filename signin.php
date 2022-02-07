@@ -18,11 +18,11 @@
           <img class="mb-4" src="assets/img/Emblem_of_the_Federal_Tax_Service.svg" width="200" height="100">
           <h1 class="h3 mb-3 fw-normal">АВТОРИЗАЦИЯ</h1>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" id="floatingInput" name="login" placeholder="name@example.com">
+            <input type="text" class="form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{3}" id="floatingInput" name="login" placeholder="name@example.com" required>
             <label for="floatingInput">Логин</label>
           </div>
           <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" name="pass" placeholder="Password" required>
             <label for="floatingPassword">Пароль</label>
           </div>
           <div class="checkbox mb-3">

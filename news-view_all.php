@@ -12,12 +12,14 @@
         <div class="row mt-3">
             <div class="col-7">
                 <div class="news-view-title text-uppercase">Все новости</div>
-                <div class="form-check mt-2">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1">
-                        Отображать содержимое
-                    </label>
-                </div>
+                <form method="get" action="news-view_all.php">
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" name="fil0" id="fil0" <?php echo $_GET["fil0"] ? "checked" : "" ?> onChange="this.form.submit()">
+                        <label class="form-check-label" for="fil0">
+                            Отображать содержимое
+                        </label>
+                    </div>
+                </form>
                 <div class="row mt-4">
                     <?php
                     $result = get_all_news($conn);
@@ -53,13 +55,18 @@
                     <a href='news-view.php?id={$row["id"]}'>
                       <img class='me-2' style='width: 70px; height: 70px;' src='includes/news/{$image_name}'>
                     </a>
-                    <div class='d-flex flex-column justify-content-between '>
+                    <div class='d-flex flex-column '>
                       <a class='text-decoration-none' href='news-view.php?id={$row["id"]}'>
                         <div class='news-hover ps-4'>{$row["title"]}</div>
-                      </a>
-                      <div class='mt-2 ps-4' id='ShowHideMe' style='display:none'>
-                        <p>{$row["content"]}</p>
-                      </div>
+                      </a>";
+
+                        if ($_GET["fil0"]) {
+                            echo "
+                            <div class='mt-2 ps-4'>
+                            <p>{$row["content"]}</p>
+                          </div> ";
+                        }
+                        echo "
                       <div class='ps-4 pt-2 text-muted'>" . date_format(date_create($row["created_when"]), 'd.m.Y H:i:s') . "</div>
                     </div>
                   </div>
@@ -77,11 +84,11 @@
 </div>
 <?php include './includes/footer.php'; ?>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.0/jquery.min.js"></script>
+
 <script>
-$(function() {
-    $('#gridCheck1').change(function() {
-        $('#ShowHideMe').toggle($(this).is(':checked'));
+    $(function() {
+        $('#gridCheck1').change(function() {
+            $('#ShowHideMe').toggle($(this).is(':checked'));
+        });
     });
-});
 </script>

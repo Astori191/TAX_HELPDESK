@@ -19,19 +19,20 @@ function db_close($db_connection)
     mysqli_close($db_connection);
 }
 
-function get_user($conn, $login, $password)
+function get_user($conn, $login)
 {
     $query = "
     SELECT 
-        users.id      as user_id,
-        users.name    as user_name,
-        users.login   as user_login,
-        roles.id      as role_id,
-        roles.ui_name as role_name
+        users.id       as user_id,
+        users.name     as user_name,
+        users.login    as user_login,
+        users.password as user_hash,
+        roles.id       as role_id,
+        roles.ui_name  as role_name
     FROM users 
         LEFT JOIN roles on users.role = roles.id
     WHERE
-        users.login ='" . $login . "' and users.password ='" . $password . "'";
+        users.login ='" . $login . "'";
 
     $res = $conn->query($query);
     return $res->fetch_assoc();
@@ -55,9 +56,11 @@ function get_all_news($conn)
     LEFT JOIN news_heads
         ON news_types.news_head_id = news_heads.id
     ORDER BY created_when DESC
-    LIMIT 10";
+        LIMIT 10";
     return mysqli_query($conn, $query);
 }
+
+
 
 function get_news($conn, $news_type)
 {
@@ -193,7 +196,8 @@ function get_selected_user($conn, $id)
         users.department_id as users_department_id,
         positions.name      as users_position_name,
         departments.name    as users_departments_name,
-        roles.ui_name       as roles_ui_name
+        roles.ui_name       as roles_ui_name,
+        roles.id            as role_id
     FROM 
         users 
     LEFT JOIN roles 
@@ -245,41 +249,75 @@ function get_selected_request($conn, $id)
     return $res->fetch_assoc();
 }
 
-function get_all_requests($conn)
+function get_requests_for_user($conn, $page, $per_page, $cur_user_id, $fil1, $fil2, $fil3, $fil4, $fil5, $fil6)
 {
+    $filter = "";
+
+    if (!$fil1 && !$fil2 && !$fil3 && !$fil4 && !$fil5 && !$fil6) {
+        $filter = "1 = 1";
+    } else {
+        $filter = $filter . "(";
+        if ($fil1) {
+            $filter = $filter . "requests.phase_id = 4 OR ";
+        }
+        if ($fil2) {
+            $filter = $filter . "requests.phase_id = 3 OR ";
+        }
+        if ($fil3) {
+            $filter = $filter . "requests.phase_id = 5 OR ";
+        }
+        if ($fil4) {
+            $filter = $filter . "requests.phase_id = 6 OR ";
+        }
+        if ($fil5) {
+            $filter = $filter . "requests.phase_id = 1 OR ";
+        }
+        if ($fil6) {
+            $filter = $filter . "requests.phase_id = 7 OR ";
+        }
+        $filter = $filter . "1 != 1)";
+    }
+
     $query = "
-        SELECT
-            requests.id             as request_id,
-            requests.created_when   as requests_created_when,
-            requests.maintenance_id as requests_maintenance_id,
-            requests.priority_id    as requests_priority_id,
-            requests.record         as requests_record,
-            requests.phase_id       as requests_phase_id,
-            requests.assignee_id    as requests_assignee_id,
-            requests.created_by     as requests_created_by,
-            maintenances.name       as maintenances_name,
-            priorities.kind         as priorities_kind,
-            phases.name             as phases_name,
-            users1.name             as users1_name,
-            users2.name 			as users2_name
-        FROM
-            requests
-        LEFT JOIN maintenances
-            ON requests.maintenance_id = maintenances.id
-        LEFT JOIN priorities
-            ON requests.priority_id = priorities.id
-        LEFT JOIN phases
-            ON requests.phase_id = phases.id
-        LEFT JOIN users as users1
-            ON requests.assignee_id = users1.id 
-        LEFT JOIN users as users2
-            ON requests.created_by = users2.id
-        ORDER BY requests_created_when DESC
-        ";
-    return mysqli_query($conn, $query);
+    SELECT
+        requests.id             as request_id,
+        requests.created_when   as requests_created_when,
+        requests.maintenance_id as requests_maintenance_id,
+        requests.priority_id    as requests_priority_id,
+        requests.record         as requests_record,
+        requests.phase_id       as requests_phase_id,
+        requests.assignee_id    as requests_assignee_id,
+        requests.created_by     as requests_created_by,
+        maintenances.name       as maintenances_name,
+        priorities.kind         as priorities_kind,
+        phases.name             as phases_name,
+        users1.name             as users1_name,
+        users2.name 			as users2_name
+    FROM
+        requests
+    LEFT JOIN maintenances
+        ON requests.maintenance_id = maintenances.id
+    LEFT JOIN priorities
+        ON requests.priority_id = priorities.id
+    LEFT JOIN phases
+        ON requests.phase_id = phases.id
+    LEFT JOIN users as users1
+        ON requests.assignee_id = users1.id 
+    LEFT JOIN users as users2
+        ON requests.created_by = users2.id      
+    WHERE
+        requests.created_by = '{$cur_user_id}' AND {$filter}
+        ORDER BY requests.created_when DESC
+    ";
+
+    $item_count =  mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) as count FROM ({$query}) as query"))["count"];
+
+    $to_skip = $page * $per_page;
+    $query = $query . "LIMIT {$to_skip},{$per_page}";
+    return array(mysqli_query($conn, $query), $item_count);
 }
 
-function get_requests_for_user($conn, $cur_user_id, $fil1, $fil2, $fil3, $fil4, $fil5, $fil6)
+function get_requests_for_admin($conn, $page, $per_page, $fil1, $fil2, $fil3, $fil4, $fil5, $fil6)
 {
     $filter = "";
 
@@ -336,10 +374,14 @@ function get_requests_for_user($conn, $cur_user_id, $fil1, $fil2, $fil3, $fil4, 
     LEFT JOIN users as users2
         ON requests.created_by = users2.id
     WHERE
-        requests.created_by = '{$cur_user_id}' AND {$filter}
+        {$filter}
+        ORDER BY requests.created_when DESC
     ";
+    $item_count =  mysqli_fetch_array(mysqli_query($conn, "SELECT COUNT(*) as count FROM ({$query}) as query"))["count"];
 
-    return mysqli_query($conn, $query);
+    $to_skip = $page * $per_page;
+    $query = $query . "LIMIT {$to_skip},{$per_page}";
+    return array(mysqli_query($conn, $query), $item_count);
 }
 
 function get_messages($conn, $id)
@@ -372,12 +414,6 @@ function get_messages($conn, $id)
         requests_history.request_id = {$id}
     ";
     return mysqli_query($conn, $query);
-}
-
-function take_on_exec($conn)
-{
-    $query = "";
-    $conn->query($query);
 }
 
 function get_phases($conn)
@@ -486,11 +522,5 @@ function get_news_types($conn)
 }
 
 
-
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 $conn = db_open();
-
-/* <form class="form-floating">
-  <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com">
-  <label for="floatingInputInvalid">Invalid input</label>
-</form> */

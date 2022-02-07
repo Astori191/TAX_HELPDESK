@@ -6,7 +6,7 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     $psfullname = $_POST['sfullname'];
     $psrole = $_POST['srole'];
     $pslogin = $_POST['slogin'];
-    $pspass = $_POST['spass'];
+    $pspass = password_hash($_POST['spass'], PASSWORD_BCRYPT, ['cost' => 12]);
     $pspositon = $_POST['spositon'];
     $psncab = $_POST['sncab'];
     $pstelnumb1 = $_POST['stelnumb1'];
@@ -19,4 +19,5 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     header('Location: /user-creation.php');
 }
 ?>
+
 <?php db_close($conn); ?>

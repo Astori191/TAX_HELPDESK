@@ -11,9 +11,9 @@
             </div>
           </div>
 
-          <?php 
-            if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 3) {
-              echo "
+          <?php
+          if ($_SESSION['role_id'] == 1 || $_SESSION['role_id'] == 3) {
+            echo "
               <div class='col-3 mt-5'>
                 <form>
                   <select class='form-select' name='java-navigator' onchange='top.location.href=this.options[this.selectedIndex].value;'>
@@ -25,7 +25,7 @@
                 </form>
             </div>
             ";
-            }
+          }
           ?>
         </div>
       </div>

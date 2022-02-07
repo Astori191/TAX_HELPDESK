@@ -24,9 +24,21 @@ $change_phase = get_phases($conn, $_GET["id"]);
                 <div class="d-flex flex-row-reverse bd-highlight ">
                     <div class="bd-highlight ">
                         <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php
+                            if ($result["requests_phase_id"] == 1) {
+                                echo "
+                                <button class='btn btn-primary dropdown-toggle disabled' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
                                 Перейти на следующий этап
-                            </button>
+                                </button>
+                                ";
+                            } else {
+                                echo "
+                                <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownMenuButton1' data-bs-toggle='dropdown' aria-expanded='false'>
+                                Перейти на следующий этап
+                                </button>
+                                ";
+                            }
+                            ?>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <?php
                                 while ($row = mysqli_fetch_array($change_phase)) {

@@ -58,7 +58,8 @@
           </thead>
           <tbody>
             <?php
-            $result = get_all_requests($conn);
+            $per_page = 8;
+            list($result, $count) = get_requests_for_admin($conn, $_GET["page"] ?? 0, $per_page, $_GET["fil1"], $_GET["fil2"], $_GET["fil3"], $_GET["fil4"], $_GET["fil5"], $_GET["fil6"]);
 
             while ($row = mysqli_fetch_array($result)) {
               echo "
@@ -85,6 +86,22 @@
           </tbody>
         </table>
       </div>
+    </div>
+    <div class="row">
+      <nav aria-label="Page navigation example" class="ps-0">
+        <ul class="pagination">
+          <?php
+          $page_count = ceil($count / $per_page);
+          for ($i = 0; $i < $page_count; $i++) {
+            if ($i == $_GET["page"]) {
+              echo "<li class='page-item active'><a class='page-link' href='?page={$i}'>" . ($i + 1) . "</a></li>";
+            } else {
+              echo "<li class='page-item'><a class='page-link' href='?page={$i}'>" . ($i + 1) . "</a></li>";
+            }
+          }
+          ?>
+        </ul>
+      </nav>
     </div>
   </div>
 </main>

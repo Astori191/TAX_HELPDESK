@@ -145,31 +145,30 @@ $messages = get_messages($conn, $_GET["id"]);
                             </div>";
                     }
                 }
+
                 if ($last_phase == 5) {
-                    echo "<div class='modal-body'>
-                    <p class='text-start'><button type='button' class='btn btn-outline-success'>Ответить</button></p>
-                    </div>";
+                    echo "
+                    <form method='post' action='write_usr_answer.php'>
+                        <div class='modal-body pt-0'>
+                            <div class='form-floating'>
+                                <textarea class='form-control' name='new_answer' placeholder='Leave a comment here' id='floatingTextarea' style='height: 80px'></textarea>
+                                <label for='floatingTextarea'>Комментарии</label>
+                                    <div class='text-start mt-2'>
+                                        <button type='submit' class='btn btn-outline-success'>Ответить</button>
+                                    </div>
+                            </div> 
+                            <div class='input-group '>
+                            <input type='hidden' class='form-control' name='cur_phase' value='2'>
+                        </div>
+                        <div class='input-group'>
+                            <input type='hidden' class='form-control' name='req_id' value='{$_GET["id"]}'>
+                        </div>
+                        </div
+                    </form>";
                 }
                 ?>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Закрыть</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Прикрепления</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Назад</button>
+                    <button class="btn btn-primary">Закрыть</button>
                 </div>
             </div>
         </div>

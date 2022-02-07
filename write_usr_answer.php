@@ -3,16 +3,15 @@
 <?php $conn = db_open(); ?>
 <?php
 
-
 if (isset($_SESSION['login'])) {
-    $prequest_id = $_GET["id"];
+    $prequest_id = $_POST['req_id'];
     $pcreated_by = $_SESSION["user_id"];
-    $pmessage_type_id = 2;
-    $pnew_message = "Обращение взято в работу.";
+    $cur_phase = $_POST['cur_phase'];
+    $pnew_message = $_POST['new_answer'];
     $pcreated_when = date("Y-m-d H:i:s");
-    take_request_on_execution($conn, $prequest_id, $pmessage_type_id, $pnew_message, $pcreated_by, $pcreated_when);
+    take_request_on_execution($conn, $prequest_id, $cur_phase, $pnew_message, $pcreated_by, $pcreated_when);
     change_request_stage_on_execution($conn, $pcreated_by, $prequest_id);
-    header("Location: /request-processing.php?id=$prequest_id");
+    header("Location: /request-view.php?id=$prequest_id");
 }
 
 ?>

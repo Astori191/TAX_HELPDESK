@@ -1,5 +1,4 @@
 <?php include './includes/header.php' ?>
-<?php include './includes/Classes/PHPExcel.php' ?>
 
 <main class="flex-shrink-0">
   <div class="container">
@@ -12,8 +11,8 @@
       </div>
       <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
         <div class="pt-4 bd-highlight">
-          <button class="btn btn-primary" type="submit" name="btn_submit_export">Выгрузка</button>
-          <img src="assets/img/icons8-microsoft-excel-2019.svg" class="excel-logo me-3" />
+          <button onclick="ExportToExcel()" class="btn btn-outline-light border" type="submit" name="btn_submit_export"><img src="assets/img/icons8-microsoft-excel-2019.svg" class="excel-logo me-3" /></button>
+
         </div>
       </form>
     </div>
@@ -57,7 +56,7 @@
     </div>
     <div class="row">
       <div class="table-responsive p-0">
-        <table class="table" id="info-table">
+        <table class="table" id="tabel">
           <thead>
             <tr style="background-color: #f8f9fa">
               <th scope="col" class="text-center">Должность</th>
@@ -103,6 +102,7 @@
   <h6></h6>
 </div>
 <?php include './includes/footer.php'; ?>
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
 <script type="text/javascript">
   function tableSearch() {
     var phrase = document.getElementById('search-text');
@@ -120,7 +120,14 @@
       } else {
         table.rows[i].style.display = "none";
       }
-
     }
+  }
+
+  function ExportToExcel() {
+    var elt = document.getElementById('tabel');
+    var wb = XLSX.utils.table_to_book(elt, {
+      sheet: "sheet1"
+    });
+    return XLSX.writeFile(wb, 'MySheetName.xlsx');
   }
 </script>
