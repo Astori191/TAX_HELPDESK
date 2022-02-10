@@ -21,12 +21,9 @@
                         </div>
                         <hr>
                         <div class="row mt-4 ps-2 pe-2">
-                            <div class="alert alert-success fs-6" role="alert">
-                                <span>Ваше обращение зарегистрировано и успешно отправлено в на исполнение.</span>
-                                <p class="mt-3">В ближайшее время сотрудник отдела информационных технологий приступит к работе. </p>
-
-                                <span>Вы автоматически вернётесь к журналу обращений через 10 секунд</span>
-
+                            <div class="alert alert-warning fs-6" role="alert">
+                                <p class="mt-3">Обращение исполнено и закрыто. Дальнейшее редактирование информации невозможно.</p>
+                                <span>Вы автоматически вернётесь к журналу обращений через 5 секунд.</span>
                                 <p class="mt-3 mb-3">Для возврата на главную страницу перейдите по <a href="index.php" class="alert-link sections-hover">ссылке.</a></p>
                             </div>
                         </div>
@@ -45,9 +42,8 @@
     var delay_popup = 0;
     setTimeout("document.getElementById('overlay').style.display='block'", delay_popup);
 </script>
-
 <script>
-    var myAddress = 'requests-new.php';
-    var myTime = 10000;
+    var myAddress = 'requests-new.php'; // адрес страницы, на которую нужно перейти
+    var myTime = 5000; // время в минутах, через которое надо перейти на другую страницу
     setTimeout('location.href =  myAddress', myTime);
 </script>

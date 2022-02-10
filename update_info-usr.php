@@ -4,7 +4,7 @@
 <?php
 $result = one_user($conn, $_POST['id']);
 
-if ($diff = array_diff_assoc($_POST, $result)) {
+if (count(array_diff($_POST, $result)) == 0) {
     header("Location: /msg-4.php");
 } else if (isset($_SESSION['login']) && !empty($_POST)) {
     $ps_id = $_POST['id'];

@@ -1,0 +1,51 @@
+---------------------------------------------------------------
+DESKTOP-09DL5BF Realm startup at 2021-10-22 15:06:34.102
+---------------------------------------------------------------
+15:06:34.102  ------------------------------------------------------
+15:06:34.102  2021-10-22 15:06:34
+15:06:34.102  Diablo II: Resurrected running under Win10 Version 10.0.19042
+15:06:34.102  Vendor:  Intel
+15:06:34.102  Description: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+15:06:34.102  Total Physical Memory: 16252.18MB
+15:06:34.102  Application Path: D:\Games\Diablo II Resurrected\
+15:06:34.102  Local IP: 0.0.0.0
+15:06:34.102  Computer name: DESKTOP-09DL5BF
+15:06:34.102  ------------------------------------------------------
+15:06:34.102  
+---------------------------------------------------------------
+DESKTOP-09DL5BF Realm startup at 2021-10-22 15:09:02.775
+---------------------------------------------------------------
+15:09:02.776  ------------------------------------------------------
+15:09:02.776  2021-10-22 15:09:02
+15:09:02.776  Diablo II: Resurrected running under Win10 Version 10.0.19042
+15:09:02.776  Vendor:  Intel
+15:09:02.776  Description: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+15:09:02.776  Total Physical Memory: 16252.18MB
+15:09:02.776  Application Path: D:\Games\Diablo II Resurrected\
+15:09:02.776  Local IP: 0.0.0.0
+15:09:02.776  Computer name: DESKTOP-09DL5BF
+15:09:02.776  ------------------------------------------------------
+15:09:02.776  
+---------------------------------------------------------------
+DESKTOP-09DL5BF Realm startup at 2021-10-22 21:14:27.225
+---------------------------------------------------------------
+21:14:27.226  ------------------------------------------------------
+21:14:27.226  2021-10-22 21:14:27
+21:14:27.226  Diablo II: Resurrected running under Win10 Version 10.0.19042
+21:14:27.226  Vendor:  Intel
+21:14:27.226  Description: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+21:14:27.226  Total Physical Memory: 16252.18MB
+21:14:27.226  Application Path: D:\Games\Diablo II Resurrected\
+21:14:27.226  Local IP: 0.0.0.0
+21:14:27.226  Computer name: DESKTOP-09DL5BF
+21:14:27.226  ------------------------------------------------------
+21:14:27.226  
+21:28:23.558  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:24.559  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:26.558  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:28.758  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:29.592  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:30.675  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:31.558  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:32.558  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+21:28:33.392  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0

@@ -11,7 +11,7 @@ if (isset($_SESSION['login']) && !empty($_POST)) {
     $pcreated_when = date("Y-m-d H:i:s");
     $query = mysqli_query($conn, "INSERT INTO `news` (`id`, `news_type_id`, `title`, `content`, `created_by`, `created_when`) 
     VALUES (NULL, '$psntype', '$psnhead', '$pncontent', '$pcreated_by', '$pcreated_when')");
-    header('Location: /news-creation.php');
+    header('Location: /msg-8.php');
 }
 ?>
 <?php db_close($conn); ?>

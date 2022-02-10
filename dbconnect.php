@@ -249,6 +249,7 @@ function get_selected_request($conn, $id)
             requests.phase_id       as requests_phase_id,
             requests.assignee_id    as requests_assignee_id,
             requests.created_by     as requests_created_by,
+            requests._attachments   as requests_attachments,
             maintenances.name       as maintenances_name,
             priorities.kind         as priorities_kind,
             phases.name             as phases_name,
@@ -449,7 +450,7 @@ function get_phases($conn)
         phases.name
     FROM 
         phases
-        WHERE phases.id != 1 AND phases.id != 2
+        WHERE phases.id != 1
     ";
     return mysqli_query($conn, $query);
 }

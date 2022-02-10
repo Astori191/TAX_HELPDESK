@@ -1,0 +1,79 @@
+---------------------------------------------------------------
+DESKTOP-09DL5BF Realm startup at 2021-10-07 22:29:43.120
+---------------------------------------------------------------
+22:29:43.120  ------------------------------------------------------
+22:29:43.120  2021-10-07 22:29:43
+22:29:43.120  Diablo II: Resurrected running under Win10 Version 10.0.19042
+22:29:43.120  Vendor:  Intel
+22:29:43.120  Description: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+22:29:43.120  Total Physical Memory: 16252.18MB
+22:29:43.120  Application Path: D:\Games\Diablo II Resurrected\
+22:29:43.120  Local IP: 0.0.0.0
+22:29:43.120  Computer name: DESKTOP-09DL5BF
+22:29:43.121  ------------------------------------------------------
+22:29:43.121  
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 160
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 160
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 160
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 160
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 161
+22:38:10.150  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 162
+22:39:51.215  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 194
+22:39:51.215  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 194
+22:39:51.215  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 195
+22:41:15.432  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 209
+22:41:15.432  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 209
+22:41:15.432  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 209
+22:41:15.432  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 210
+22:42:26.015  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 247
+22:42:26.015  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 247
+22:42:26.015  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 248
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 27
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 27
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 27
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 27
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 28
+22:42:26.098  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 29
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 272
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 272
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 272
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 272
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 272
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 273
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 274
+22:43:56.797  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 275
+22:43:56.965  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 279
+22:43:56.965  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 279
+22:43:56.965  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 280
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 58
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 58
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 58
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 58
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 59
+22:43:57.032  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 60
+22:44:25.502  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 84
+22:44:25.502  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 84
+22:44:25.502  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 85
+22:52:31.050  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 139
+22:52:31.050  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 139
+22:52:31.050  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 139
+22:52:31.050  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 140
+22:52:42.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 144
+22:52:42.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 144
+22:52:42.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 144
+22:52:42.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 145
+22:53:03.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 163
+22:53:03.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 163
+22:53:03.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 163
+22:53:03.716  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 164
+22:54:59.700  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 198
+22:54:59.700  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 198
+22:54:59.700  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 198
+22:54:59.700  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 201
+23:01:15.634  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 250
+23:01:15.634  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 250
+23:01:15.634  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 250
+23:01:15.634  sFillLocation() - Attempt to access out of bounds index -1, ptRoomInfo->nIdCurr = 253
+23:10:35.336  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+23:10:37.769  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+23:10:47.936  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0

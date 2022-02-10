@@ -42,10 +42,27 @@ $change_phase = get_phases($conn, $_GET["id"]);
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <?php
                                 while ($row = mysqli_fetch_array($change_phase)) {
-                                    echo
-                                    "<li value ='{$row["id"]}'><a class='dropdown-item' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
+                                    if (($result["requests_phase_id"] == 5) && ($row["id"] != 5) && ($result["requests_phase_id"] == 5)
+                                        && ($row["id"] != 6) && ($result["requests_phase_id"] == 5) && ($row["id"] != 7)
+                                    ) {
+                                        echo
+                                        "<li value ='{$row["id"]}'><a class='dropdown-item disabled' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
                                     data-bs-toggle='modal'>{$row["name"]}</a></li>";
+                                    } else if (($result["requests_phase_id"] == 4)) {
+                                        echo
+                                        "<li value ='{$row["id"]}'><a class='dropdown-item disabled' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
+                                    data-bs-toggle='modal'>{$row["name"]}</a></li>";
+                                    } else if (($result["requests_phase_id"] != 4) && ($row["id"] == 4)) {
+                                        echo
+                                        "<li value ='{$row["id"]}'><a class='dropdown-item disabled' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
+                                    data-bs-toggle='modal'>{$row["name"]}</a></li>";
+                                    } else {
+                                        echo
+                                        "<li value ='{$row["id"]}'><a class='dropdown-item' href='#' data-bs-target='#exampleModalToggle{$row["id"]}' 
+                                        data-bs-toggle='modal'>{$row["name"]}</a></li>";
+                                    }
                                 }
+
                                 ?>
                             </ul>
                         </div>
@@ -66,7 +83,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Время создания</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo date_format(date_create($result["requests_created_when"]), 'd.m.Y H:i:s') ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
@@ -76,7 +93,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Исполнитель</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo $result["users1_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
@@ -86,7 +103,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Этап</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo $result["phases_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
@@ -96,7 +113,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Приоритет</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo $result["priorities_kind"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
@@ -106,7 +123,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Вид услуги</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo $result["maintenances_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
@@ -124,17 +141,40 @@ $change_phase = get_phases($conn, $_GET["id"]);
                         <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Заявитель</h5>
                     </div>
                     <div class="col-8">
-                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group mb-3">
                             <input class="form-control" type="text" value="<?php echo $result["users2_name"] ?>" aria-label="readonly input example" readonly>
                         </div>
                     </div>
                 </div>
+                <form method="post" action="file-download.php">
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <h5 class=" fw-bold" style="font-family: 'Roboto Condensed', sans-serif;">Вложения</h5>
+                        </div>
+                        <div class="col-8">
+                            <?php
+                            if ($result["requests_attachments"] != NULL) {
+                                echo "                    
+                        <div class='input-group mb-4'>
+                        <input class='form-control text-start' type='submit' name='file_name' value='{$result["requests_attachments"]}'> 
+                        <input type='hidden' class='form-control' name='cur_id' value='{$result["request_id"]}'>
+                        </div>";
+                            } else {
+                                echo "
+                        <div class='input-group mb-3'>
+                        <input class='form-control' type='text' value='Вложений нет' disabled>
+                    </div>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </form>
                 <div class="row mt-3">
                     <div class="col-10">
                         <?php
                         if ($result["requests_phase_id"] != 1) {
                             echo "
-                            <a class='btn btn-primary disabled' role='button' aria-disabled='true'>Взять в работу</a>";
+                            <a class='btn btn-primary disabled me-2' role='button' aria-disabled='true'>Взять в работу</a>";
                         } else {
                             echo "
                             <a class='btn btn-primary' href='take_exec_request.php?id={$_GET["id"]}' class='link-primary'>Взять в работу</a>";
@@ -188,7 +228,7 @@ $change_phase = get_phases($conn, $_GET["id"]);
                 <div class='modal-body'>
                     <form method='post' action='change_request_phase.php'>
                         <div class='form-floating'>
-                            <textarea class='form-control' name='new_msg' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px'></textarea>
+                            <textarea minlength='15' class='form-control' name='new_msg' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px' required></textarea>
                             <label for='floatingTextarea2'>Комментарии</label>
                         </div>
                         <div class='input-group '>

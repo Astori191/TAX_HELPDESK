@@ -1,0 +1,17 @@
+---------------------------------------------------------------
+DESKTOP-09DL5BF Realm startup at 2021-10-08 22:37:42.604
+---------------------------------------------------------------
+22:37:42.605  ------------------------------------------------------
+22:37:42.605  2021-10-08 22:37:42
+22:37:42.605  Diablo II: Resurrected running under Win10 Version 10.0.19042
+22:37:42.605  Vendor:  Intel
+22:37:42.605  Description: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
+22:37:42.605  Total Physical Memory: 16252.18MB
+22:37:42.605  Application Path: D:\Games\Diablo II Resurrected\
+22:37:42.605  Local IP: 0.0.0.0
+22:37:42.605  Computer name: DESKTOP-09DL5BF
+22:37:42.605  ------------------------------------------------------
+22:37:42.605  
+22:56:22.943  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+22:56:41.493  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0
+23:00:48.610  WARNING: Invalid index in ITEMSRecalculateSetItemSpecificMods. See :0

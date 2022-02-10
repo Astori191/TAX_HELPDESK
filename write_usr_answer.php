@@ -11,7 +11,7 @@ if (isset($_SESSION['login'])) {
     $pcreated_when = date("Y-m-d H:i:s");
     take_request_on_execution($conn, $prequest_id, $cur_phase, $pnew_message, $pcreated_by, $pcreated_when);
     change_request_stage_on_execution($conn, $pcreated_by, $prequest_id);
-    header("Location: /request-view.php?id=$prequest_id");
+    header("Location: /msg-6.php");
 }
 
 ?>

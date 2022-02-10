@@ -26,7 +26,7 @@
                         <span>ФИО пользователя</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="sfullname" required>
+                        <input minlength="10" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="sfullname" required>
                     </div>
                     <div class="mt-3 fw-bold">
                         <span>Роль</span>
@@ -45,19 +45,19 @@
                         <span>Логин</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="slogin" required>
+                        <input minlength="11" maxlength="11" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="slogin" required>
                     </div>
                     <div class="mt-3 fw-bold">
                         <span>Пароль</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="spass" required>
+                        <input type="password" minlength="10" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="spass" required>
                     </div>
                     <div class="mt-3 fw-bold">
                         <span>Адрес СЭД</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="smail" required>
+                        <input minlength="15" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="smail" required>
                     </div>
                 </div>
                 <div class="col-5">
@@ -91,19 +91,19 @@
                         <span>№ кабинета</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="sncab" required>
+                        <input minlength="2" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="sncab" required>
                     </div>
                     <div class="mt-3 fw-bold">
                         <span>№ телефона гор.</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="stelnumb1" required>
+                        <input minlength="7" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="stelnumb1" required>
                     </div>
                     <div class="mt-3 fw-bold">
                         <span>№ телефона внутр.</span>
                     </div>
                     <div class="form-group mt-2">
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="stelnumb2" required>
+                        <input minlength="5" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" name="stelnumb2" required>
                     </div>
                 </div>
             </div>

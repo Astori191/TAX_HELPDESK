@@ -68,7 +68,7 @@
             while ($row = mysqli_fetch_array($result)) {
               echo "
                 <tr>
-                  <td width='96'>2021-000{$row["request_id"]}</th>
+                  <td width='96'>2022-00{$row["request_id"]}</th>
                   <td width='160'>" . date_format(date_create($row["requests_created_when"]), 'd.m.Y H:i:s') . "</td>
                   <td width='127'>
                     {$row["priorities_kind"]}
@@ -122,7 +122,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" action="add_request.php" onsubmit="return confirm('Вы уверены, что хотите создать обращение?');">
+        <form method="post" enctype="multipart/form-data" action="add_request.php" onsubmit="return confirm('Вы уверены, что хотите создать обращение?');">
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Категория</label>
             <select class="form-select" name="mn_id" aria-label="Simple name" required>
@@ -154,7 +154,11 @@
           </div>
           <div class="form-group mb-3">
             <label class="form-label fw-bold">Описание проблемы</label>
-            <textarea class="form-control txtarea" name="rec" id="exampleFormControlTextarea1" rows="4" required><?= $precord ?></textarea>
+            <textarea minlength="20" class="form-control txtarea" name="rec" id="exampleFormControlTextarea1" rows="4" required><?= $precord ?></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <label for="formFile" class="form-label fw-bold">Прикрепление вложений</label>
+            <input class="form-control" type="file" id="formFile" name="userfile">
           </div>
           <div class="form-group mb-3">
             <?php if (isset($_SESSION['login'])) {
