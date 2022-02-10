@@ -24,7 +24,7 @@
                             <div class="alert alert-success fs-6" role="alert">
                                 <p class="mt-3">Новый пользователь успешно зарегистрирован.</p>
                                 <span>Вы автоматически вернётесь к созданию нового пользователя через 10 секунд</span>
-                                <p class="mt-3 mb-3">Для возврата на главную страницу перейдите по <a href="user-creation.php" class="alert-link">ссылке.</a></p>
+                                <p class="mt-3 mb-3">Для возврата на главную страницу перейдите по <a href="user-creation.php" class="alert-link sections-hover">ссылке.</a></p>
                             </div>
                         </div>
                     </div>
